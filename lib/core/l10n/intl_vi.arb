@@ -1,0 +1,14 @@
+
+{
+  "@@locale": "vi",
+  "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "ok": "OK",
+  "cancel": "Hủy",
+  "retry": "Thử lại",
+  "close": "Đóng",
+  "search": "Tìm kiếm",
+  "home": "Trang chủ"
+}

@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "login": "Login",
+  "logout": "Logout",
+  "email": "Email",
+  "password": "Password",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "retry": "Retry",
+  "close": "Close",
+  "search": "Search",
+  "home": "Home"
+}

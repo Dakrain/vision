@@ -1,0 +1,118 @@
+name: flutter_base_project
+description: "A new Flutter project."
+publish_to: 'none' 
+version: 1.0.0+1
+
+# Dart SDK constraints
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+# Flutter dependencies
+# Flutter dependencies
+dependencies:
+  # Core Flutter SDK
+  flutter:
+    sdk: flutter
+
+  # UI related
+  cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  iconly: ^1.0.1
+
+  # Networking
+  dio: ^5.4.0
+  retrofit: ^4.0.3
+
+  # For data class
+  equatable: ^2.0.3
+
+  # State management
+  flutter_bloc: ^8.1.3
+  get_it: ^7.6.4
+  rxdart: ^0.27.7
+  bloc_concurrency: ^0.2.2
+
+  # Local data storage
+  secure_shared_preferences: ^0.0.4
+
+  # Resource localizations
+  flutter_localizations:
+    sdk: flutter
+
+  # Dependency injection
+  injectable: ^2.3.2
+
+  # Routing
+  auto_route: ^7.8.4
+
+  # Notifications
+  flutter_local_notifications: ^16.2.0
+
+  # Firebase
+  firebase_core: ^2.24.0
+  firebase_analytics: ^10.7.2
+
+  # Image loading and caching
+  cached_network_image: ^3.3.0
+
+  # Network connectivity
+  connectivity_plus: ^5.0.2
+
+  # Code generation
+  freezed_annotation: ^2.4.1
+  firebase_crashlytics: ^3.4.6
+  hive_flutter: ^1.1.0
+  dartz: ^0.10.1
+  logger: ^2.0.2+1
+  fluttertoast: ^8.2.5
+
+# Development dependencies
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1 
+  build_runner: ^2.4.7
+  injectable_generator: ^2.4.1
+  retrofit_generator: ^8.0.4
+  freezed: ^2.4.5
+  flutter_gen_runner: ^5.3.2
+  flutter_launcher_icons: ^0.13.1
+  intl: 0.18.1
+  intl_utils: 2.8.3
+  auto_route_generator: ^7.3.2
+
+# Configuration for launcher icons
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21
+
+# Configuration for flutter_gen
+flutter_gen:
+  output: lib/gen/ 
+  line_length: 80 
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    rive: false
+    lottie: true
+
+flutter_intl:
+  enabled: true
+  main_locale: en
+  output_dir: lib/gen/ 
+  arb_dir: lib/core/l10n
+
+# Flutter specific configuration
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/svgs/
+    - assets/images/
+    - assets/jsons/
+  
