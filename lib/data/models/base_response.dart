@@ -1,16 +1,29 @@
+import 'package:flutter_base_project/data/models/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'base_response.g.dart';
 
 @JsonSerializable(
   genericArgumentFactories: true,
+  createFactory: false,
+  createToJson: false,
+  explicitToJson: false,
 )
 class BaseResponse<T> {
   final T? data;
+  @JsonKey(fromJson: ApiError.fromJson, includeToJson: false)
+  final ApiError? error;
 
-  BaseResponse({required this.data});
+  BaseResponse({this.data, this.error});
 
   factory BaseResponse.fromJson(
-          Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>
-      _$BaseResponseFromJson(json, fromJsonT);
+      Map<String, dynamic> json, T Function(Object? json) fromJsonT) {
+    if (json['code'] != null) {
+      return BaseResponse(
+        data: null,
+        error: ApiError.fromJson(json),
+      );
+    }
+    return BaseResponse(data: fromJsonT(json));
+  }
+
+  bool get isSuccess => error == null;
 }

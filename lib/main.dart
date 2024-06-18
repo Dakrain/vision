@@ -5,16 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/core/router/app_router.dart';
 import 'package:flutter_base_project/firebase_options.dart';
+import 'package:flutter_base_project/presentation/global/bloc/authentication_bloc.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/utilities/network_check_utilities.dart';
 import 'package:flutter_base_project/presentation/utilities/toast_utilities.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get_it/get_it.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'generated/l10n.dart';
 
+final appRouter = injector.get<AppRouter>();
 void main() async {
   // Ensure Flutter binding
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,10 +28,23 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Initialize GetIt for dependency injection
-  GetIt getIt = GetIt.instance;
-
   await inject();
+
+  EasyLoading.instance
+    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+    ..loadingStyle = EasyLoadingStyle.custom
+    ..maskType = EasyLoadingMaskType.black
+    ..indicatorColor = Colors.white
+    ..backgroundColor = Colors.white
+    ..textColor = kGreyscale80
+    ..radius = 8
+    ..contentPadding = const EdgeInsets.all(32)
+    ..indicatorWidget =
+        LoadingAnimationWidget.prograssiveDots(color: kPrimaryColor, size: 48);
+
+  if (kDebugMode) {
+    Bloc.observer = const AppBlocObserver();
+  }
 
   // Initialize Flutter Local Notifications
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -51,20 +68,62 @@ void main() async {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   }
 
-  runApp(const MyApp());
+  runApp(BlocProvider<AuthenticationBloc>(
+    create: (context) =>
+        injector()..add(const AuthenticationEvent.authenticateStarted()),
+    child: BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) {
+        appRouter.push(state.map(
+            unAuthenticated: (_) => const LoginRoute(),
+            authenticated: (_) => const HomeRoute(),
+            authenticating: (_) => const DebugRoute()));
+      },
+      child: const MyApp(),
+    ),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class AppBlocObserver extends BlocObserver {
+  /// {@macro app_bloc_observer}
+  const AppBlocObserver();
+
+  @override
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
+    super.onChange(bloc, change);
+    if (bloc is Cubit) print(change);
+  }
+
+  @override
+  void onTransition(
+    Bloc<dynamic, dynamic> bloc,
+    Transition<dynamic, dynamic> transition,
+  ) {
+    super.onTransition(bloc, transition);
+    print(transition);
+  }
+}
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final appRouter = injector.get<AppRouter>();
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  @override
+  void reassemble() {
+    super.reassemble();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Base Project',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          dialogBackgroundColor: Colors.white,
+          primaryColorLight: Colors.yellow,
+          platform: TargetPlatform.iOS,
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kGreyscale3,
           appBarTheme: const AppBarTheme(
@@ -151,6 +210,7 @@ class MyApp extends StatelessWidget {
         // },
         navigatorObservers: () => [NavigatorObserver()],
       ),
+      builder: EasyLoading.init(),
       routeInformationParser: appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,
       supportedLocales: S.delegate.supportedLocales,

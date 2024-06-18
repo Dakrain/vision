@@ -10,10 +10,12 @@ class TextfieldWithLabel extends StatefulWidget {
     this.controller,
     this.obscureText = false,
     this.readOnly = false,
+    this.errorMessage,
   });
 
   final String label;
   final String? hintText;
+  final String? errorMessage;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool obscureText;
@@ -52,6 +54,7 @@ class _TextfieldWithLabelState extends State<TextfieldWithLabel> {
           readOnly: widget.readOnly,
           decoration: InputDecoration(
             hintText: widget.hintText,
+            errorText: widget.errorMessage,
             isDense: true,
             suffixIcon: widget.obscureText
                 ? IconButton(

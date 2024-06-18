@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/core/extensions/context_extension.dart';
 import 'package:flutter_base_project/gen/assets.gen.dart';
+import 'package:flutter_base_project/presentation/global/bloc/authentication_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../theme/colors.dart';
@@ -43,7 +45,7 @@ class DashboardTab extends StatelessWidget {
                                 ?.copyWith(color: Colors.white),
                           ),
                           Text(
-                            'Phan Văn Cao',
+                            context.user?.fullName ?? 'Khách',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium

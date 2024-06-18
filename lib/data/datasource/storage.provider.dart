@@ -1,11 +1,8 @@
+import 'package:flutter_base_project/domain/providers/storage.provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:injectable/injectable.dart';
 
-abstract class StorageProvider {
-  Future<T> get<T>(String key, {T? defaultValue});
-  Future<void> set(String key, dynamic value);
-  Future<void> delete(String key);
-}
-
+@Injectable(as: StorageProvider)
 class HiveStorageProvider implements StorageProvider {
   final Box<dynamic> _box;
 
@@ -26,7 +23,7 @@ class HiveStorageProvider implements StorageProvider {
   }
 
   @override
-  Future<T> get<T>(String key, {T? defaultValue}) {
+  T? get<T>(String key, {T? defaultValue}) {
     return _box.get(key, defaultValue: defaultValue);
   }
 }

@@ -71,6 +71,10 @@ dependencies:
   carousel_slider: ^4.2.1
   smooth_page_indicator: ^1.1.0
   json_annotation: ^4.9.0
+  flutter_easyloading: ^3.0.5
+  loading_animation_widget: ^1.2.1
+  package_info_plus: ^8.0.0
+  device_info_plus: ^10.1.0
 
 # Development dependencies
 dev_dependencies:
