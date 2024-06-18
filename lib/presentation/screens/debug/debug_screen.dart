@@ -1,6 +1,6 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_base_project/core/router/app_router.dart';
 
 @RoutePage()
 class DebugScreen extends StatefulWidget {
@@ -18,7 +18,13 @@ class _DebugScreenState extends State<DebugScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [TextButton(onPressed: () {}, child: Text('Debug 1'))],
+          children: [
+            TextButton(
+                onPressed: () {
+                  context.navigateTo(const LanguageRoute());
+                },
+                child: const Text('Debug 1'))
+          ],
         ),
       ),
     );

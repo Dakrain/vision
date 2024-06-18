@@ -23,12 +23,6 @@ linter:
     # Avoid using `Iterable.forEach()` with a function literal
     avoid_function_literals_in_foreach_calls: true
 
-    # Avoid returning null for Future
-    avoid_returning_null_for_future: true
-
-    # Avoid using deprecated members
-    avoid_using_deprecated_member: true
-
     # Avoid using unnecessary statements
     unnecessary_statements: true
 

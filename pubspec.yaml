@@ -16,7 +16,7 @@ dependencies:
 
   # UI related
   cupertino_icons: ^1.0.2
-  google_fonts: ^6.1.0
+  google_fonts: ^6.2.1
   flutter_svg: ^2.0.9
   iconly: ^1.0.1
 
@@ -54,7 +54,7 @@ dependencies:
   firebase_analytics: ^10.7.2
 
   # Image loading and caching
-  cached_network_image: ^3.3.0
+  cached_network_image: ^3.3.1
 
   # Network connectivity
   connectivity_plus: ^5.0.2
@@ -66,6 +66,10 @@ dependencies:
   dartz: ^0.10.1
   logger: ^2.0.2+1
   fluttertoast: ^8.2.5
+  gap: ^3.0.1
+  shimmer: ^3.0.0
+  carousel_slider: ^4.2.1
+  smooth_page_indicator: ^1.1.0
 
 # Development dependencies
 dev_dependencies:
@@ -79,8 +83,8 @@ dev_dependencies:
   freezed: ^2.4.5
   flutter_gen_runner: ^5.3.2
   flutter_launcher_icons: ^0.13.1
-  intl: 0.18.1
-  intl_utils: 2.8.3
+  intl: 0.19.0
+  intl_utils: ^2.8.7
   auto_route_generator: ^7.3.2
 
 # Configuration for launcher icons
@@ -112,7 +116,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/svgs/
+    - assets/svg/icons/
+    - assets/svg/images/
     - assets/images/
-    - assets/jsons/
   
