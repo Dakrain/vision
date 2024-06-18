@@ -12,3 +12,4 @@ export 'meeting_setup/assign_cohost_screen.dart';
 export 'meeting_setup/add_members_screen.dart';
 export 'participant_list/participant_list_screen.dart';
 export 'waiting_room/waiting_room_screen.dart';
+export 'event_detail/event_detail_screen.dart';

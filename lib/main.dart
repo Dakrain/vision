@@ -125,7 +125,20 @@ class MyApp extends StatelessWidget {
             errorStyle: const TextStyle(
               fontSize: 12,
               color: kAlternateColorRed,
-              fontWeight: FontWeight.w500,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                width: 1,
+                color: kAlternateColorRed,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                width: 1,
+                color: Colors.black,
+              ),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),

@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context.navigateTo(const HomeRoute());
                         },
                         child: Text(
-                          'Guest login',
+                          'Tiếp tục như  khách',
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
