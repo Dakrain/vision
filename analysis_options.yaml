@@ -9,6 +9,12 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "lib/gen/**"
+    - "lib/generated/**"
 linter:
   rules:
     # Uncomment to disable the `avoid_print` rule
@@ -37,3 +43,4 @@ linter:
 
     # Prefer using `isNotEmpty` for collections and strings
     prefer_is_not_empty: true
+  

@@ -1,11 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_base_project/data/interceptor/auth.interceptor.dart';
 import 'package:flutter_base_project/data/interceptor/response.interceptor.dart';
-import 'package:flutter_base_project/data/services/authentication.service.dart';
-import 'package:flutter_base_project/data/services/event.service.dart';
-import 'package:flutter_base_project/data/services/news.service.dart';
 import 'package:flutter_base_project/data/services/services.dart';
-import 'package:flutter_base_project/data/services/shop.service.dart';
 import 'package:flutter_base_project/domain/providers/storage.provider.dart';
 import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';

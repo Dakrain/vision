@@ -16,27 +16,29 @@ class QuickAsset extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: SvgPicture.asset(
+    final width = ((MediaQuery.sizeOf(context).width - 72) / 3);
+
+    return SizedBox(
+      width: width,
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          children: [
+            SvgPicture.asset(
               asset,
               width: 40,
               height: 40,
             ),
-          ),
-          const Gap(4),
-          Text(
-            title,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall
-                ?.copyWith(fontWeight: FontWeight.w500),
-          ),
-        ],
+            const Gap(4),
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_base_project/domain/domain.dart';
-import 'package:flutter_base_project/domain/repositories/repositories.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

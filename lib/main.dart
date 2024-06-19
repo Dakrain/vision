@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/core/router/app_router.dart';
@@ -15,6 +19,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import 'generated/l10n.dart';
 
@@ -24,9 +29,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (!Platform.isWindows) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 
   await inject();
 
@@ -78,7 +85,10 @@ void main() async {
             authenticated: (_) => const HomeRoute(),
             authenticating: (_) => const DebugRoute()));
       },
-      child: const MyApp(),
+      child: DevicePreview(
+        enabled: true,
+        builder: (context) => const MyApp(),
+      ),
     ),
   ));
 }
@@ -110,6 +120,16 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
+}
+
 class _MyAppState extends State<MyApp> {
   @override
   void reassemble() {
@@ -120,6 +140,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Base Project',
+      scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
           dialogBackgroundColor: Colors.white,
           primaryColorLight: Colors.yellow,
@@ -210,7 +231,11 @@ class _MyAppState extends State<MyApp> {
         // },
         navigatorObservers: () => [NavigatorObserver()],
       ),
-      builder: EasyLoading.init(),
+      locale: DevicePreview.locale(context),
+      builder: (context, child) {
+        EasyLoading.init();
+        return DevicePreview.appBuilder(context, child);
+      },
       routeInformationParser: appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,
       supportedLocales: S.delegate.supportedLocales,
