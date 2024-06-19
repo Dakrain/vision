@@ -113,6 +113,8 @@ class EventItem extends StatelessWidget {
               children: [
                 Text(
                   name ?? '',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge

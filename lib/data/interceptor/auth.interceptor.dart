@@ -22,6 +22,7 @@ class AuthenInterceptor extends InterceptorsWrapper {
       'appplatform': Platform.isAndroid ? 'Android' : 'iOS',
       'apppversion': version,
       'appdeviceid': uuid,
+      'applocale': 'vn'
     });
 
     if (token != null && token.isNotEmpty) {

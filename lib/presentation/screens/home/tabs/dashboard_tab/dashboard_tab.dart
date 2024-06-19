@@ -189,14 +189,50 @@ class DashboardTab extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20.0, vertical: 24),
                             child: state.maybeMap(
+                                initial: (value) {
+                                  return const Shimmers(
+                                    child: Column(
+                                      children: [
+                                        HighlightNews(
+                                          title: 'News',
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
                                 success: (value) {
-                                  // final news = value.data.rows[0];
-
+                                  final bigNews =
+                                      value.data.rows.take(1).toList();
+                                  final smallNews =
+                                      value.data.rows.skip(1).toList();
+                                  if (bigNews.isEmpty) {
+                                    return const SizedBox();
+                                  }
                                   return Column(
                                     children: [
-                                      const HighlightNews(
-                                        featureNews: true,
+                                      HighlightNews(
+                                        title: bigNews[0].title,
+                                        imageUrl: bigNews[0].imageUrl,
+                                        createdAt: bigNews[0].createdAt,
                                       ),
+                                      SizedBox(
+                                        height: 144,
+                                        child: GridView.count(
+                                          crossAxisCount: 2,
+                                          padding: EdgeInsets.zero,
+                                          scrollDirection: Axis.horizontal,
+                                          childAspectRatio: 2 / 8,
+                                          mainAxisSpacing: 16,
+                                          crossAxisSpacing: 16,
+                                          children: smallNews
+                                              .map((news) => NewsItem(
+                                                    imageUrl: news.imageUrl,
+                                                    title: news.title,
+                                                    createdAt: news.createdAt,
+                                                  ))
+                                              .toList(),
+                                        ),
+                                      )
                                     ].separated(const Gap(16)),
                                   );
                                 },
@@ -265,18 +301,29 @@ class DashboardTab extends StatelessWidget {
                           shortDescription:
                               'Chia sẻ những bài giảng từ các mục sư trên toàn thế giới',
                           onTap: () {},
-                          child: const SingleChildScrollView(
+                          child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 24, horizontal: 20),
-                            child: Row(
-                              children: [
-                                VideoItem(),
-                                Gap(16),
-                                VideoItem(),
-                                Gap(16),
-                                VideoItem(),
-                              ],
+                            child: state.maybeMap(
+                              initial: (value) => const Shimmers(
+                                child: VideoItem(
+                                  title: 'Video',
+                                ),
+                              ),
+                              success: (value) {
+                                return Row(
+                                  children: value.data.rows
+                                      .take(3)
+                                      .map((video) => VideoItem(
+                                            imageUrl: video.thumbnailUrl,
+                                            title: video.title,
+                                          ))
+                                      .toList()
+                                      .separated(const Gap(16)),
+                                );
+                              },
+                              orElse: () => const SizedBox(),
                             ),
                           ),
                         );

@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/widgets/network_image.dart';
 import 'package:gap/gap.dart';
 
-
 class VideoItem extends StatelessWidget {
-  const VideoItem({super.key});
+  const VideoItem({super.key, this.imageUrl = '', this.title});
+  final String? imageUrl;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +17,16 @@ class VideoItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-                height: MediaQuery.sizeOf(context).height * .20,
-                width: MediaQuery.sizeOf(context).width * .7,
-                fit: BoxFit.cover,
-                imageUrl:
-                    'https://t4.ftcdn.net/jpg/03/22/03/67/360_F_322036731_WmhmhHaMekS8DypjUGem1TGFl51U5ldS.jpg'),
+            child: CachedImage(
+              height: MediaQuery.sizeOf(context).height * .20,
+              width: MediaQuery.sizeOf(context).width * .7,
+              fit: BoxFit.cover,
+              imageUrl: imageUrl,
+            ),
           ),
           const Gap(16),
           Text(
-            'Mục sư Joshua Duong - Cánh cửa của sự xung đột - Part 1',
+            title ?? '',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)

@@ -1,44 +1,58 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/widgets/network_image.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../theme/colors.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({
     super.key,
+    this.imageUrl = '',
+    this.title,
+    this.createdAt,
   });
+  final String? imageUrl;
+  final String? title;
+  final int? createdAt;
 
   @override
   Widget build(BuildContext context) {
+    DateTime createdAtDate =
+        DateTime.fromMillisecondsSinceEpoch((createdAt ?? 1) * 1000);
+    String formattedDate = DateFormat('dd/MM/yyyy').format(createdAtDate);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: CachedNetworkImage(
-              width: 64,
-              height: 64,
-              fit: BoxFit.cover,
-              imageUrl:
-                  'https://t4.ftcdn.net/jpg/03/22/03/67/360_F_322036731_WmhmhHaMekS8DypjUGem1TGFl51U5ldS.jpg'),
+          child: CachedImage(
+            width: 64,
+            height: 64,
+            imageUrl: imageUrl,
+            fit: BoxFit.cover,
+          ),
         ),
         const Gap(16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'This week in Christian history: Pantheon converted, Jesuit missionary to China dies...',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+              Expanded(
+                child: Text(
+                  title ?? '',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
               ),
               const Gap(8),
               Text(
-                '10/03/2021',
+                formattedDate,
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall

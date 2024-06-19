@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 
 class CachedImage extends StatelessWidget {
@@ -24,6 +25,17 @@ class CachedImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit,
+      errorWidget: (context, url, error) {
+        return Container(
+          width: width,
+          height: height,
+          color: kGreyscale5,
+          child: const Icon(
+            Icons.image,
+            color: kGreyscale50,
+          ),
+        );
+      },
       progressIndicatorBuilder: (context, url, progress) {
         return Shimmers(
           child: Container(

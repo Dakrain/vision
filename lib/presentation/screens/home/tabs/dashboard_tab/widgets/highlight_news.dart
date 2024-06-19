@@ -11,18 +11,16 @@ class HighlightNews extends StatelessWidget {
     this.imageUrl = '',
     this.createdAt,
     this.title,
-    required this.featureNews,
   });
 
   final String? imageUrl;
   final int? createdAt;
   final String? title;
-  final bool featureNews;
 
   @override
   Widget build(BuildContext context) {
     DateTime createdAtDate =
-        DateTime.fromMillisecondsSinceEpoch(createdAt ?? 1 * 1000);
+        DateTime.fromMillisecondsSinceEpoch((createdAt ?? 1) * 1000);
     String formattedDate = DateFormat('dd/MM/yyyy').format(createdAtDate);
 
     return Column(
@@ -32,6 +30,9 @@ class HighlightNews extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           child: CachedImage(
             imageUrl: imageUrl,
+            width: double.maxFinite,
+            height: MediaQuery.sizeOf(context).height * 0.20,
+            fit: BoxFit.fitWidth,
           ),
         ),
         const Gap(16),
