@@ -1,13 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:gap/gap.dart';
+
+import 'package:flutter_base_project/core/utils/hex_color.dart';
 
 import '../../../../../theme/colors.dart';
 
 class ShopItem extends StatelessWidget {
   const ShopItem({
     super.key,
+    this.imageUrl,
+    this.categoryName,
+    this.name,
+    this.price,
+    this.color,
   });
+  final String? imageUrl;
+  final String? categoryName;
+  final String? name;
+  final int? price;
+  final String? color;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +47,22 @@ class ShopItem extends StatelessWidget {
               ClipRRect(
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(16)),
-                child: CachedNetworkImage(
-                    imageUrl:
-                        'https://sagift.vn/wp-content/uploads/2023/11/binh-giu-nhiet-lock-lock-feather-light-3.webp'),
+                child: CachedImage(
+                  imageUrl: imageUrl ?? '',
+                  fit: BoxFit.contain,
+                  width: MediaQuery.sizeOf(context).width * 0.4,
+                  height: MediaQuery.sizeOf(context).width * 0.4,
+                  imageBuilder: (context, imageProvider) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: kGreyscale10,
+                        image: DecorationImage(
+                          image: imageProvider,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
@@ -47,12 +74,12 @@ class ShopItem extends StatelessWidget {
                         horizontal: 8,
                       ),
                       decoration: BoxDecoration(
-                          color: kAlternateColorOrange.withOpacity(0.1),
+                          color: HexColor(color ?? '#E9E9E9').withOpacity(0.1),
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(
-                              width: 1, color: kAlternateColorOrange)),
+                              width: 1, color: HexColor(color ?? '#E9E9E9'))),
                       child: Text(
-                        'Sách',
+                        categoryName ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
@@ -61,7 +88,7 @@ class ShopItem extends StatelessWidget {
                     ),
                     const Gap(8),
                     Text(
-                      'Sách giáo lý của hội thánh công giáo',
+                      name ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
@@ -71,7 +98,7 @@ class ShopItem extends StatelessWidget {
                     ),
                     const Gap(8),
                     Text(
-                      '\$24.23',
+                      '\$$price',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: kPrimaryColor, fontWeight: FontWeight.w500),
                     )

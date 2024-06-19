@@ -1,19 +1,54 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../theme/colors.dart';
+import 'package:intl/intl.dart';
 
 class EventItem extends StatelessWidget {
   const EventItem({
     super.key,
+    this.name,
+    this.url,
+    this.startDate,
+    this.startTime,
+    this.endTime,
+    this.address,
+    this.band,
   });
+
+  final String? name;
+  final String? url;
+  final String? address;
+  final String? band;
+  final int? startDate;
+  final int? startTime;
+  final int? endTime;
 
   @override
   Widget build(BuildContext context) {
+    DateTime eventDate =
+        DateTime.fromMillisecondsSinceEpoch(startDate ?? 1 * 1000);
+    String month = DateFormat('MMM')
+        .format(eventDate); // Format month as 3-letter abbreviation
+    String dayOfMonth = eventDate.day.toString();
+    DateTime eventStartTime =
+        DateTime.fromMillisecondsSinceEpoch(startTime ?? 1 * 1000);
+    DateTime eventEndTime =
+        DateTime.fromMillisecondsSinceEpoch(endTime ?? 1 * 1000);
+
+    String formattedDate = DateFormat('dd/MM/yyyy').format(eventDate);
+    String formattedStartTime = DateFormat('HH:mm').format(eventStartTime);
+    String formattedEndTime = DateFormat('HH:mm').format(eventEndTime);
+
+    String formattedDateTime =
+        '$formattedStartTime - $formattedEndTime - $formattedDate';
+
     return Container(
       width: MediaQuery.sizeOf(context).width * .65,
+      height: MediaQuery.sizeOf(context).height * .45,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -30,16 +65,19 @@ class EventItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: CachedNetworkImage(
-                imageUrl:
-                    'https://media.istockphoto.com/id/480125692/photo/sunset-summer-hcm-city.jpg?s=612x612&w=0&k=20&c=5vtajrIKJzZhv1B0aSJW88maZsmYFP0hFd7w4pEocLM='),
+            child: CachedImage(
+              imageUrl: url ?? '',
+              width: double.maxFinite,
+              height: (MediaQuery.sizeOf(context).width * .65) / 2,
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Kỳ Hiệp Nguyện, Kiêng Ăn'),
+                Text(name ?? ''),
                 const Gap(16),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +91,7 @@ class EventItem extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'May',
+                            month,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
@@ -61,7 +99,7 @@ class EventItem extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                     color: kPrimaryColor),
                           ),
-                          Text('13',
+                          Text(dayOfMonth,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -76,36 +114,39 @@ class EventItem extends StatelessWidget {
                       child: Column(
                         children: [
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Assets.svg.icons.icClock.svg(),
                               const Gap(8),
                               Expanded(
                                   child: Text(
-                                '17:00 - 18:30 | 13/5/2021',
+                                formattedDateTime,
                                 style: Theme.of(context).textTheme.bodySmall,
                               )),
                             ],
                           ),
                           const Gap(4),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Assets.svg.icons.icLocation.svg(),
                               const Gap(8),
                               Expanded(
                                   child: Text(
-                                'Ho Chi Minh City - Vietnam',
+                                address ?? '',
                                 style: Theme.of(context).textTheme.bodySmall,
                               )),
                             ],
                           ),
                           const Gap(4),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Assets.svg.icons.icPerson.svg(),
                               const Gap(8),
                               Expanded(
                                   child: Text(
-                                'Host by: Vision 20',
+                                band ?? '',
                                 style: Theme.of(context).textTheme.bodySmall,
                               )),
                             ],

@@ -1,5 +1,6 @@
-import 'package:flutter_base_project/data/models/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'entities.dart';
 
 @JsonSerializable(
   genericArgumentFactories: true,

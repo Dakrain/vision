@@ -1,6 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_base_project/domain/providers/providers.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton(as: NetworkProvider)
 class NetworkProviderImpl extends NetworkProvider {
   late Connectivity connectivity;
 

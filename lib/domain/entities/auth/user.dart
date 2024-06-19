@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/data/models/auth/drive.dart';
+import 'package:flutter_base_project/domain/entities/auth/drive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'chat_info.dart';

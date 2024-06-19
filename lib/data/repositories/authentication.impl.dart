@@ -1,4 +1,3 @@
-import 'package:flutter_base_project/data/models/auth/user.dart';
 import 'package:flutter_base_project/data/services/authentication.service.dart';
 import 'package:flutter_base_project/domain/domain.dart';
 import 'package:injectable/injectable.dart';

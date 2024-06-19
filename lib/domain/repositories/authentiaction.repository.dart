@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/data/models/auth/user.dart';
+import 'package:flutter_base_project/domain/entities/entities.dart';
 
 abstract class AuthenticationRepository {
   Future<User> login(String email, String password);

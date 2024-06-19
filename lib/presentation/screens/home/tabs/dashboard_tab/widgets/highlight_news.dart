@@ -1,26 +1,43 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../theme/colors.dart';
+import 'package:intl/intl.dart';
 
 class HighlightNews extends StatelessWidget {
-  const HighlightNews({super.key});
+  const HighlightNews({
+    super.key,
+    this.imageUrl = '',
+    this.createdAt,
+    this.title,
+    required this.featureNews,
+  });
+
+  final String? imageUrl;
+  final int? createdAt;
+  final String? title;
+  final bool featureNews;
 
   @override
   Widget build(BuildContext context) {
+    DateTime createdAtDate =
+        DateTime.fromMillisecondsSinceEpoch(createdAt ?? 1 * 1000);
+    String formattedDate = DateFormat('dd/MM/yyyy').format(createdAtDate);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: CachedNetworkImage(
-              imageUrl:
-                  'https://t4.ftcdn.net/jpg/03/22/03/67/360_F_322036731_WmhmhHaMekS8DypjUGem1TGFl51U5ldS.jpg'),
+          child: CachedImage(
+            imageUrl: imageUrl,
+          ),
         ),
         const Gap(16),
         Text(
-          'How Utterly Absurd That So-Called ‘Pro-Life Evangelicals for Biden’ Now Feel Betrayed and...',
+          title ?? '',
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context)
@@ -30,7 +47,7 @@ class HighlightNews extends StatelessWidget {
         ),
         const Gap(8),
         Text(
-          '10/03/2021',
+          formattedDate,
           style: Theme.of(context)
               .textTheme
               .bodySmall

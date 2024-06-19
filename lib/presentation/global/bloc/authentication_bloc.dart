@@ -1,6 +1,6 @@
 import 'package:flutter_base_project/domain/usecases/authentication.usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_base_project/data/models/auth/user.dart';
+import 'package:flutter_base_project/domain/entities/auth/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

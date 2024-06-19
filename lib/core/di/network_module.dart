@@ -2,6 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_base_project/data/interceptor/auth.interceptor.dart';
 import 'package:flutter_base_project/data/interceptor/response.interceptor.dart';
 import 'package:flutter_base_project/data/services/authentication.service.dart';
+import 'package:flutter_base_project/data/services/event.service.dart';
+import 'package:flutter_base_project/data/services/news.service.dart';
+import 'package:flutter_base_project/data/services/services.dart';
+import 'package:flutter_base_project/data/services/shop.service.dart';
 import 'package:flutter_base_project/domain/providers/storage.provider.dart';
 import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -38,4 +42,16 @@ abstract class NetworkModule {
 
   AuthenticationService provideAuthenService(Dio dio) =>
       AuthenticationService(dio, baseUrl: 'https://api.vision20.us/v1');
+
+  EventService provideEventService(Dio dio) =>
+      EventService(dio, baseUrl: 'https://api.vision20.us/v1');
+
+  ShopService provideShopService(Dio dio) =>
+      ShopService(dio, baseUrl: 'https://api.vision20.us/v1');
+
+  NewsService provideNewsService(Dio dio) =>
+      NewsService(dio, baseUrl: 'https://api.vision20.us/v1');
+
+  VideoService provideVideoService(Dio dio) =>
+      VideoService(dio, baseUrl: 'https://api.vision20.us/v1');
 }

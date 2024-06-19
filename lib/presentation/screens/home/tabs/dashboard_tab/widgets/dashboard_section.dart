@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 class DashboardSection extends StatelessWidget {
   const DashboardSection({
     super.key,
-    required this.onTap,
+    this.onTap,
     required this.title,
     required this.shortDescription,
     required this.child,
@@ -13,7 +13,7 @@ class DashboardSection extends StatelessWidget {
 
   final String title;
   final String shortDescription;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Widget child;
 
   @override

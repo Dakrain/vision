@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_base_project/data/requests/requests.dart';
+import 'package:flutter_base_project/domain/entities/entities.dart';
 import 'package:retrofit/retrofit.dart';
-
-import '../models/models.dart';
 
 part 'authentication.service.g.dart';
 

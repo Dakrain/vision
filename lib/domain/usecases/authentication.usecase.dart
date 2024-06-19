@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_base_project/data/models/api_error.dart';
-import 'package:flutter_base_project/data/models/auth/user.dart';
+import 'package:flutter_base_project/domain/entities/api_error.dart';
+import 'package:flutter_base_project/domain/entities/auth/user.dart';
 import 'package:flutter_base_project/domain/providers/storage.provider.dart';
+import 'package:injectable/injectable.dart';
 
 import '../repositories/repositories.dart';
 
+@injectable
 class AuthenticationUseCase {
   final AuthenticationRepository repository;
   final StorageProvider storageProvider;
