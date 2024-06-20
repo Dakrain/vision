@@ -50,4 +50,7 @@ abstract class NetworkModule {
 
   VideoService provideVideoService(Dio dio) =>
       VideoService(dio, baseUrl: 'https://api.vision20.us/v1');
+
+  MeetingService provideMeetingService(Dio dio) =>
+      MeetingService(dio, baseUrl: 'https://api.vision20.us/v1');
 }
