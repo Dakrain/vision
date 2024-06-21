@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/data/providers/agora.provider.dart';
 import 'package:flutter_base_project/domain/domain.dart';

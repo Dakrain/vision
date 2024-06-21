@@ -1,6 +1,8 @@
 export 'avatar.dart';
 export 'button.dart';
 export 'network_image.dart';
+export 'news/highlight_news.dart';
+export 'news/news_item.dart';
 export 'search_bar.dart';
 export 'section.dart';
 export 'segmented_control.dart';

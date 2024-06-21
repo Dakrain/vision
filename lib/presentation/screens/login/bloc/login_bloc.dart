@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_base_project/domain/entities/api_error.dart';
 import 'package:flutter_base_project/domain/entities/auth/user.dart';
 import 'package:flutter_base_project/domain/usecases/authentication.usecase.dart';

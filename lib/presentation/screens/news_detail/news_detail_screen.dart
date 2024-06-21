@@ -7,6 +7,7 @@ import 'package:flutter_base_project/gen/assets.gen.dart';
 import 'package:flutter_base_project/presentation/screens/news_detail/cubit/news_detail_cubit.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/widgets/network_image.dart';
+import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:gap/gap.dart';
@@ -32,6 +33,7 @@ class NewsDetailScreen extends StatelessWidget {
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 news.title ?? '',
@@ -69,7 +71,9 @@ class NewsDetailScreen extends StatelessWidget {
               BlocBuilder<NewsDetailCubit, NewsDetailState>(
                 builder: (context, state) {
                   return state.map(
-                    initial: (_) => const CircularProgressIndicator.adaptive(),
+                    initial: (_) => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
                     success: (state) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -92,10 +96,11 @@ class NewsDetailScreen extends StatelessWidget {
                                 ?.copyWith(fontWeight: FontWeight.w600),
                           ),
                           const Gap(24),
-                          ListView.builder(
+                          ListView.separated(
                             shrinkWrap: true,
                             primary: false,
                             itemCount: state.model.relatedNews!.length,
+                            separatorBuilder: (context, index) => const Gap(16),
                             itemBuilder: (context, index) {
                               final relatedNews =
                                   state.model.relatedNews![index];
@@ -104,50 +109,10 @@ class NewsDetailScreen extends StatelessWidget {
                                   context.pushRoute(
                                       NewsDetailRoute(news: relatedNews));
                                 },
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: CachedImage(
-                                        width: 64,
-                                        height: 64,
-                                        imageUrl: relatedNews.imageUrl ?? '',
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    const Gap(16),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            relatedNews.title ?? '',
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                          const Gap(8),
-                                          Text(
-                                            DateTimeUtils
-                                                .getFormattedDateFromTimestamp(
-                                                    relatedNews.createdAt ?? 0,
-                                                    'dd/MM/yyyy'),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall
-                                                ?.copyWith(color: kGreyscale50),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                child: NewsItem(
+                                  imageUrl: relatedNews.imageUrl,
+                                  title: relatedNews.title,
+                                  createdAt: relatedNews.createdAt,
                                 ),
                               );
                             },
