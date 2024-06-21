@@ -19,8 +19,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
+import 'data/providers/agora.provider.dart';
 import 'generated/l10n.dart';
 
 final appRouter = injector.get<AppRouter>();
@@ -36,6 +36,8 @@ void main() async {
   }
 
   await inject();
+
+  await injector<AgoraProvider>().initEngine();
 
   EasyLoading.instance
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
@@ -139,7 +141,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Base Project',
+      title: 'Vision 20',
       scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
           dialogBackgroundColor: Colors.white,
@@ -234,7 +236,8 @@ class _MyAppState extends State<MyApp> {
       locale: DevicePreview.locale(context),
       builder: (context, child) {
         EasyLoading.init();
-        return DevicePreview.appBuilder(context, child);
+        return DevicePreview.appBuilder(
+            context, FlutterEasyLoading(child: child));
       },
       routeInformationParser: appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,

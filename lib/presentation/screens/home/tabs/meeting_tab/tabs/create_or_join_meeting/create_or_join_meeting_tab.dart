@@ -37,7 +37,7 @@ class _CreateOrJoinMeetingTabState extends State<CreateOrJoinMeetingTab> {
           SecondaryButton(
             child: const Text('Tạo cuộc họp mới'),
             onPressed: () {
-              context.navigateTo(const MeetingSetupRoute());
+              context.navigateTo(MeetingSetupRoute(isEdit: false));
             },
           ),
           Expanded(

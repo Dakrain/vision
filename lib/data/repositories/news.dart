@@ -40,7 +40,8 @@ class NewsRepositoryImpl extends BaseRepository implements NewsRepository {
   }
 
   @override
-  Future<Paging<News>> getRelatedNews({required String type, required int id}) {
+  Future<Paging<News>> getRelatedNews(
+      {required String type, required String id}) {
     return execute(service.getRelatedNews(type: type, id: id));
   }
 }

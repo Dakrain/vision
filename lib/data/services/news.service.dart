@@ -32,6 +32,6 @@ abstract class NewsService {
   @GET('/posts/related')
   Future<BaseResponse<Paging<News>>> getRelatedNews({
     @Query('type') required String type,
-    @Query('id') required int id,
+    @Query('id') required String id,
   });
 }

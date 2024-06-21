@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/core/base/basic_state.dart';
 import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/core/extensions/context_extension.dart';
+import 'package:flutter_base_project/core/router/app_router.dart';
 import 'package:flutter_base_project/domain/domain.dart';
 import 'package:flutter_base_project/gen/assets.gen.dart';
 import 'package:flutter_base_project/presentation/screens/home/tabs/dashboard_tab/bloc/event_cubit.dart';
@@ -21,6 +23,83 @@ class DashboardTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Event section
+
+    //News section
+    final newsSection = BlocBuilder<NewsCubit, BasicState<Paging<News>>>(
+      builder: (context, state) {
+        return DashboardSection(
+          title: 'Tin tức mỗi ngày',
+          shortDescription: 'Cập nhật những thông tin mới nhất trong hội thánh',
+          onTap: () {
+            context.pushRoute(const NewsRoute());
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24),
+            child: state.maybeMap(
+                initial: (value) {
+                  return const Shimmers(
+                    child: Column(
+                      children: [
+                        HighlightNews(
+                          title: 'News',
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                success: (value) {
+                  final bigNews = value.data.rows.take(1).toList();
+                  final smallNews = value.data.rows.skip(1).toList();
+                  if (bigNews.isEmpty) {
+                    return const SizedBox();
+                  }
+
+                  return Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.pushRoute(NewsDetailRoute(news: bigNews[0]));
+                        },
+                        child: HighlightNews(
+                          title: bigNews[0].title,
+                          imageUrl: bigNews[0].imageUrl,
+                          createdAt: bigNews[0].createdAt,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 144,
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.horizontal,
+                          childAspectRatio: 2 / 8,
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                          children: smallNews
+                              .map((news) => GestureDetector(
+                                    onTap: () {
+                                      context.pushRoute(
+                                          NewsDetailRoute(news: news));
+                                    },
+                                    child: NewsItem(
+                                      imageUrl: news.imageUrl,
+                                      title: news.title,
+                                      createdAt: news.createdAt,
+                                    ),
+                                  ))
+                              .toList(),
+                        ),
+                      )
+                    ].separated(const Gap(16)),
+                  );
+                },
+                orElse: () => const SizedBox()),
+          ),
+        );
+      },
+    );
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<EventCubit>(
@@ -110,7 +189,10 @@ class DashboardTab extends StatelessWidget {
                             children: [
                               QuickAsset(
                                   title: 'Tạo cuộc họp',
-                                  onTap: () {},
+                                  onTap: () {
+                                    context.pushRoute(
+                                        MeetingSetupRoute(isEdit: false));
+                                  },
                                   asset:
                                       Assets.svg.icons.icDashboardMeeting.path),
                               QuickAsset(
@@ -119,7 +201,9 @@ class DashboardTab extends StatelessWidget {
                                   asset: Assets.svg.icons.icDashboardLive.path),
                               QuickAsset(
                                   title: 'Mua sắm online',
-                                  onTap: () {},
+                                  onTap: () {
+                                    context.pushRoute(const ShopRoute());
+                                  },
                                   asset: Assets.svg.icons.icDashboardShop.path),
                               QuickAsset(
                                   title: 'Hội nghị',
@@ -128,11 +212,15 @@ class DashboardTab extends StatelessWidget {
                                       .svg.icons.icDashboardConference.path),
                               QuickAsset(
                                   title: 'Tin tức',
-                                  onTap: () {},
+                                  onTap: () {
+                                    context.pushRoute(const NewsRoute());
+                                  },
                                   asset: Assets.svg.icons.icDashboardNews.path),
                               QuickAsset(
                                   title: 'Đài truyền hình',
-                                  onTap: () {},
+                                  onTap: () {
+                                    context.pushRoute(const VideoRoute());
+                                  },
                                   asset: Assets.svg.icons.icDashboardTv.path),
                             ],
                           ),
@@ -178,69 +266,7 @@ class DashboardTab extends StatelessWidget {
                       },
                     ),
                     const Gap(8),
-                    BlocBuilder<NewsCubit, BasicState<Paging<News>>>(
-                      builder: (context, state) {
-                        return DashboardSection(
-                          title: 'Tin tức mỗi ngày',
-                          shortDescription:
-                              'Cập nhật những thông tin mới nhất trong hội thánh',
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 24),
-                            child: state.maybeMap(
-                                initial: (value) {
-                                  return const Shimmers(
-                                    child: Column(
-                                      children: [
-                                        HighlightNews(
-                                          title: 'News',
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                                success: (value) {
-                                  final bigNews =
-                                      value.data.rows.take(1).toList();
-                                  final smallNews =
-                                      value.data.rows.skip(1).toList();
-                                  if (bigNews.isEmpty) {
-                                    return const SizedBox();
-                                  }
-                                  return Column(
-                                    children: [
-                                      HighlightNews(
-                                        title: bigNews[0].title,
-                                        imageUrl: bigNews[0].imageUrl,
-                                        createdAt: bigNews[0].createdAt,
-                                      ),
-                                      SizedBox(
-                                        height: 144,
-                                        child: GridView.count(
-                                          crossAxisCount: 2,
-                                          padding: EdgeInsets.zero,
-                                          scrollDirection: Axis.horizontal,
-                                          childAspectRatio: 2 / 8,
-                                          mainAxisSpacing: 16,
-                                          crossAxisSpacing: 16,
-                                          children: smallNews
-                                              .map((news) => NewsItem(
-                                                    imageUrl: news.imageUrl,
-                                                    title: news.title,
-                                                    createdAt: news.createdAt,
-                                                  ))
-                                              .toList(),
-                                        ),
-                                      )
-                                    ].separated(const Gap(16)),
-                                  );
-                                },
-                                orElse: () => const SizedBox()),
-                          ),
-                        );
-                      },
-                    ),
+                    newsSection,
                     const Gap(8),
                     BlocBuilder<ShopCubit, BasicState<Paging<Product>>>(
                       builder: (context, state) {

@@ -1,0 +1,1 @@
+enum MeetingView { speaker, gallery }

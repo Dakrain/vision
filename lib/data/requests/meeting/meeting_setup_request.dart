@@ -10,9 +10,9 @@ class MeetingSetupRequest {
   final String? description;
   final int? startTime;
   final int? waitingRoom;
-  final int? enableVideo;
-  final int? enableAudio;
-  final int? enableChat;
+  final int? muteAllVideo;
+  final int? muteAllAudio;
+  final int? muteAllChat;
   final int? isRecording;
   final int? multipleShareScreen;
   final List<Invite>? invite;
@@ -24,9 +24,9 @@ class MeetingSetupRequest {
       required this.description,
       required this.startTime,
       required this.waitingRoom,
-      required this.enableVideo,
-      required this.enableAudio,
-      required this.enableChat,
+      required this.muteAllAudio,
+      required this.muteAllChat,
+      required this.muteAllVideo,
       required this.isRecording,
       required this.multipleShareScreen,
       required this.invite});

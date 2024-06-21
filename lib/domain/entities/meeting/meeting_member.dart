@@ -37,4 +37,6 @@ class MeetingMember {
 
   factory MeetingMember.fromJson(Map<String, dynamic> json) =>
       _$MeetingMemberFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MeetingMemberToJson(this);
 }

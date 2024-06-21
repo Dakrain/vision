@@ -10,7 +10,7 @@ abstract class NewsRepository {
 
   Future<Paging<News>> getRelatedNews({
     required String type,
-    required int id,
+    required String id,
   });
 
   Future<NewsDetail> getNewsDetail({

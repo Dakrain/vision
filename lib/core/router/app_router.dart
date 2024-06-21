@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/domain.dart';
 import '../../presentation/screens/debug/debug_screen.dart';
 import '../../presentation/screens/screens.dart';
 
@@ -26,6 +28,13 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: MeetingSetupRoute.page),
         AutoRoute(page: WaitingRoomRoute.page),
         AutoRoute(page: AssignCohostRoute.page),
-        AutoRoute(page: AddMembersRoute.page)
+        AutoRoute(page: AddMembersRoute.page),
+        AutoRoute(page: NewsDetailRoute.page),
+        AutoRoute(page: ProductDetailRoute.page),
+        AutoRoute(page: VideoRoute.page),
+        AutoRoute(page: EventDetailRoute.page),
+        AutoRoute(page: NewsRoute.page),
+        AutoRoute(page: VideoDetailRoute.page),
+        AutoRoute(page: ShopRoute.page),
       ];
 }

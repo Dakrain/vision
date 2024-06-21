@@ -12,6 +12,7 @@ export 'meeting/join_meeting_info.dart';
 export 'meeting/leave_room.dart';
 export 'meeting/meeting_info.dart';
 export 'meeting/meeting_member.dart';
+export 'meeting/room.dart';
 export 'meeting/share_screen_user.dart';
 export 'news/news.dart';
 export 'news/news_detail.dart';

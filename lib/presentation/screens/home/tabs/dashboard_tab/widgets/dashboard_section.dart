@@ -25,7 +25,7 @@ class DashboardSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 24, left: 20, right: 20),
             child: InkWell(
-              onTap: () {},
+              onTap: onTap,
               child: Column(
                 children: [
                   Row(

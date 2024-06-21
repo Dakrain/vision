@@ -22,4 +22,6 @@ class Host {
       this.avatarUrl});
 
   factory Host.fromJson(Map<String, dynamic> json) => _$HostFromJson(json);
+
+  Map<String, dynamic> toJson() => _$HostToJson(this);
 }

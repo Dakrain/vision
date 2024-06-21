@@ -28,11 +28,22 @@ class NewsUsecase {
   }
 
   Future<Either<ApiError, Paging<News>>> getRelatedNews({
-    required String type,
-    required int id,
+    required int type,
+    required String id,
   }) async {
+    String typeString = 'news';
+
+    if (type == 2) {
+      typeString = 'news';
+    } else if (type == 5) {
+      typeString = 'duonglinh';
+    } else if (type == 6) {
+      typeString = 'library';
+    } else if (type == 4) {
+      typeString = 'music';
+    }
     try {
-      final result = await repository.getRelatedNews(type: type, id: id);
+      final result = await repository.getRelatedNews(type: typeString, id: id);
       return Right(result);
     } catch (e) {
       return Left(ApiError.fromException(e));

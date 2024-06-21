@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_base_project/data/interceptor/auth.interceptor.dart';
 import 'package:flutter_base_project/data/interceptor/response.interceptor.dart';
@@ -20,6 +22,9 @@ abstract class NetworkModule {
       requestHeader: true,
       responseHeader: true,
       requestBody: true,
+      logPrint: (object) {
+        log('Dio: $object');
+      },
     ));
 
     dio.interceptors.add(ResponseInterceptor());

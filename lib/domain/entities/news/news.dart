@@ -28,3 +28,8 @@ class News {
 
   factory News.fromJson(Map<String, dynamic> json) => _$NewsFromJson(json);
 }
+
+//2 news
+//5 duonglinh
+//6 libary
+//4 music 

@@ -21,4 +21,6 @@ class ShareScreenUser {
 
   factory ShareScreenUser.fromJson(Map<String, dynamic> json) =>
       _$ShareScreenUserFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ShareScreenUserToJson(this);
 }
