@@ -16,4 +16,33 @@ class VideoUsecase {
       return Left(ApiError.fromException(e));
     }
   }
+
+  Future<Either<ApiError, Paging<Video>>> fetchRelatedVideos(
+      int videoId) async {
+    try {
+      final result = await repository.fetchRelatedVideos(videoId);
+      return Right(result);
+    } catch (e) {
+      return Left(ApiError.fromException(e));
+    }
+  }
+
+  Future<Either<ApiError, Paging<VideoCategory>>>
+      fetchVideosGroupByCategory() async {
+    try {
+      final result = await repository.fetchVideosGroupByCategory();
+      return Right(result);
+    } catch (e) {
+      return Left(ApiError.fromException(e));
+    }
+  }
+
+  Future<Either<ApiError, Paging<Video>>> fetchSlideVideos() async {
+    try {
+      final result = await repository.fetchSlideVideos();
+      return Right(result);
+    } catch (e) {
+      return Left(ApiError.fromException(e));
+    }
+  }
 }

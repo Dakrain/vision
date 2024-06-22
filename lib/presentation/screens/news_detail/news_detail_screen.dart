@@ -93,7 +93,8 @@ class NewsDetailScreen extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineSmall
-                                ?.copyWith(fontWeight: FontWeight.w600),
+                                ?.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 20),
                           ),
                           const Gap(24),
                           ListView.separated(

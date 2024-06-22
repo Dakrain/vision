@@ -4,6 +4,7 @@ import 'package:flutter_base_project/domain/entities/video/video.dart';
 import 'package:flutter_base_project/domain/entities/video/video_detail.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/entities/entities.dart';
 import '../../domain/repositories/repositories.dart';
 import '../services/video.service.dart';
 
@@ -19,7 +20,7 @@ class VideoRepositoryImpl extends BaseRepository implements VideoRepository {
 
   @override
   Future<Paging<Video>> fetchRelatedVideos(int videoId) {
-    throw UnimplementedError();
+    return execute(service.getRelatedVideos(videoId));
   }
 
   @override
@@ -31,5 +32,15 @@ class VideoRepositoryImpl extends BaseRepository implements VideoRepository {
   Future<Paging<Video>> fetchVideos({int? categoryId, int? pageNumber}) {
     return execute(
         service.getVideos(pageNumber: pageNumber, categoryId: categoryId));
+  }
+
+  @override
+  Future<Paging<VideoCategory>> fetchVideosGroupByCategory() {
+    return execute(service.getVideosGroupByCategory());
+  }
+
+  @override
+  Future<Paging<Video>> fetchSlideVideos() {
+    return execute(service.getSlideVideos());
   }
 }

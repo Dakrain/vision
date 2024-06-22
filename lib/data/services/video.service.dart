@@ -14,4 +14,13 @@ abstract class VideoService {
     @Query('page_number') int? pageNumber,
     @Query('category_id') int? categoryId,
   });
+
+  @GET('/videos/{id}/similar')
+  Future<BaseResponse<Paging<Video>>> getRelatedVideos(@Path('id') int videoId);
+
+  @GET('/videos/groupbycategory')
+  Future<BaseResponse<Paging<VideoCategory>>> getVideosGroupByCategory();
+
+  @GET('/videos/slide')
+  Future<BaseResponse<Paging<Video>>> getSlideVideos();
 }

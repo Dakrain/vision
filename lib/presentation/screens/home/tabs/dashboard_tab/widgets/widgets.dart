@@ -4,4 +4,3 @@ export 'event_item.dart';
 
 export 'quick_asset.dart';
 export 'shop_item.dart';
-export 'video_item.dart';

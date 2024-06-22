@@ -326,7 +326,9 @@ class DashboardTab extends StatelessWidget {
                           title: 'Video mới nhất',
                           shortDescription:
                               'Chia sẻ những bài giảng từ các mục sư trên toàn thế giới',
-                          onTap: () {},
+                          onTap: () {
+                            context.pushRoute(const VideoRoute());
+                          },
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             padding: const EdgeInsets.symmetric(
@@ -341,9 +343,16 @@ class DashboardTab extends StatelessWidget {
                                 return Row(
                                   children: value.data.rows
                                       .take(3)
-                                      .map((video) => VideoItem(
-                                            imageUrl: video.thumbnailUrl,
-                                            title: video.title,
+                                      .map((video) => GestureDetector(
+                                            onTap: () {
+                                              context.pushRoute(
+                                                  VideoDetailRoute(
+                                                      video: video));
+                                            },
+                                            child: VideoItem(
+                                              imageUrl: video.thumbnailUrl,
+                                              title: video.title,
+                                            ),
                                           ))
                                       .toList()
                                       .separated(const Gap(16)),

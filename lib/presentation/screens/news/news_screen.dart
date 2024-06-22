@@ -48,7 +48,8 @@ class _NewsScreenState extends State<NewsScreen> {
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 20),
                         ),
                         ListView.separated(
                           padding: const EdgeInsets.symmetric(vertical: 24),

@@ -8,3 +8,4 @@ export 'section.dart';
 export 'segmented_control.dart';
 export 'shimmer.dart';
 export 'textfield.dart';
+export 'video/video_item.dart';

@@ -85,6 +85,7 @@ dependencies:
   url_launcher: ^6.3.0
   flutter_widget_from_html: ^0.15.1
   chewie: ^1.8.1
+  video_player: ^2.8.7
   
 # Development dependencies
 dev_dependencies:

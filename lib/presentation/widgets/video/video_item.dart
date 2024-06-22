@@ -4,20 +4,21 @@ import 'package:flutter_base_project/presentation/widgets/network_image.dart';
 import 'package:gap/gap.dart';
 
 class VideoItem extends StatelessWidget {
-  const VideoItem({super.key, this.imageUrl = '', this.title});
+  const VideoItem(
+      {super.key, this.imageUrl = '', this.title, this.percentageWidth = 0.7});
   final String? imageUrl;
   final String? title;
-
+  final double percentageWidth;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width * .7,
+      width: MediaQuery.sizeOf(context).width * percentageWidth,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: MediaQuery.sizeOf(context).height * .20,
-            width: MediaQuery.sizeOf(context).width * .7,
+            width: MediaQuery.sizeOf(context).width * percentageWidth,
             child: Stack(
               children: [
                 ClipRRect(
@@ -26,7 +27,7 @@ class VideoItem extends StatelessWidget {
                     fit: BoxFit.cover,
                     imageUrl: imageUrl,
                     height: MediaQuery.sizeOf(context).height * .20,
-                    width: MediaQuery.sizeOf(context).width * .7,
+                    width: MediaQuery.sizeOf(context).width * percentageWidth,
                   ),
                 ),
                 Align(

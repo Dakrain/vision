@@ -24,4 +24,5 @@ export 'status.dart';
 export 'success.dart';
 export 'video/related.dart';
 export 'video/video.dart';
+export 'video/video_category.dart';
 export 'video/video_detail.dart';

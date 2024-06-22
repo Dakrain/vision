@@ -6,4 +6,8 @@ abstract class VideoRepository {
   Future<VideoDetail> fetchVideoDetail(String id);
 
   Future<Paging<Video>> fetchRelatedVideos(int videoId);
+
+  Future<Paging<VideoCategory>> fetchVideosGroupByCategory();
+
+  Future<Paging<Video>> fetchSlideVideos();
 }
