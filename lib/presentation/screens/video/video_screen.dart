@@ -44,10 +44,10 @@ class _VideoScreenState extends State<VideoScreen> {
       builder: (context, state) {
         return state.when(
           initial: () => const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator.adaptive(),
           ),
           loading: () => const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator.adaptive(),
           ),
           success: (data) {
             return ListView.separated(
@@ -188,10 +188,10 @@ class _VideoScreenState extends State<VideoScreen> {
               );
             },
             initial: (_) => const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator.adaptive(),
                 ),
             loading: (_) => const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator.adaptive(),
                 ),
             orElse: () => const SizedBox());
       },

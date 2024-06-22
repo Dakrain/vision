@@ -11,7 +11,7 @@ class VideoCubit extends Cubit<BasicState<Paging<Video>>> {
   final VideoUsecase usecase;
   VideoCubit(this.usecase) : super(const BasicState.initial());
 
-  Future<void> getVideos(int categoryId, {int? pageNumber = 1}) async {
+  Future<void> fetchVideos(int categoryId, {int? pageNumber = 1}) async {
     emit(const BasicState.loading());
     final result = await usecase.fetchVideos(
       categoryId: categoryId,
@@ -21,5 +21,26 @@ class VideoCubit extends Cubit<BasicState<Paging<Video>>> {
       (l) => emit(BasicState.failure(l)),
       (r) => emit(BasicState.success(r)),
     );
+  }
+
+  Future<void> fetchMore(int categoryId, {int? pageNumber = 1}) async {
+    state.mapOrNull(success: (state) async {
+      final currentData = state.data;
+      final result = await usecase.fetchVideos(
+        categoryId: categoryId,
+        pageNumber: (currentData.pageNumber ?? 0) + 1,
+      );
+      result.fold(
+        (l) => emit(BasicState.failure(l)),
+        (r) {
+          final newData = Paging<Video>(
+            pageNumber: r.pageNumber,
+            rows: currentData.rows + r.rows,
+            total: r.total,
+          );
+          emit(BasicState.success(newData));
+        },
+      );
+    });
   }
 }

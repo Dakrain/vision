@@ -30,7 +30,7 @@ class VideoCategoryScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: BlocProvider(
           create: (context) => injector<VideoCubit>()
-            ..getVideos(
+            ..fetchVideos(
               categoryId,
               pageNumber: 1,
             ),
@@ -57,6 +57,7 @@ class VideoCategoryScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Expanded(
+                                flex: 2,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
                                   child: Stack(
@@ -90,13 +91,16 @@ class VideoCategoryScreen extends StatelessWidget {
                               ),
                               const Gap(16),
                               Expanded(
+                                  flex: 3,
                                   child: Text(
-                                item.title ?? '',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.w600),
-                              )),
+                                    item.title ?? '',
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w600),
+                                  )),
                             ],
                           ),
                         ),

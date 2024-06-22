@@ -12,6 +12,8 @@ class Paging<T> {
   final int? pageNumber;
   final List<T> rows;
 
+  bool get canLoadMore => (total ?? 0) > rows.length;
+
   Paging({
     this.total,
     this.pageSize,
