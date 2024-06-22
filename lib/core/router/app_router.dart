@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/presentation/screens/video_category/video_category_screen.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/domain.dart';
@@ -36,5 +37,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: NewsRoute.page),
         AutoRoute(page: VideoDetailRoute.page),
         AutoRoute(page: ShopRoute.page),
+        AutoRoute(page: VideoCategoryRoute.page),
       ];
 }

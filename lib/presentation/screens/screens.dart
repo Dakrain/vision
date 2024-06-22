@@ -16,6 +16,7 @@ export 'event_detail/event_detail_screen.dart';
 export 'product_detail/product_detail_screen.dart';
 export 'news_detail/news_detail_screen.dart';
 export 'video/video_screen.dart';
+export 'video_category/video_category_screen.dart';
 export 'video_detail/video_detail_screen.dart';
 export 'news/news_screen.dart';
 export 'shop/shop_screen.dart';

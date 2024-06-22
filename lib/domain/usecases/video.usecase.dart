@@ -8,9 +8,11 @@ class VideoUsecase {
 
   VideoUsecase(this.repository);
 
-  Future<Either<ApiError, Paging<Video>>> fetchVideos() async {
+  Future<Either<ApiError, Paging<Video>>> fetchVideos(
+      {int? categoryId, int? pageNumber}) async {
     try {
-      final result = await repository.fetchVideos(pageNumber: 1);
+      final result = await repository.fetchVideos(
+          pageNumber: pageNumber, categoryId: categoryId);
       return Right(result);
     } catch (e) {
       return Left(ApiError.fromException(e));

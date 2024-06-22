@@ -8,6 +8,7 @@ import 'package:flutter_base_project/core/router/app_router.dart';
 import 'package:flutter_base_project/domain/entities/entities.dart';
 import 'package:flutter_base_project/domain/entities/video/video_category.dart';
 import 'package:flutter_base_project/presentation/screens/video/cubit/slide_video_cubit.dart';
+import 'package:flutter_base_project/presentation/screens/video_category/video_category_screen.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/utilities/text_utils.dart';
 import 'package:flutter_base_project/presentation/widgets/widgets.dart';
@@ -64,25 +65,32 @@ class _VideoScreenState extends State<VideoScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              e.categoryName ?? '',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineSmall
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 20),
+                      GestureDetector(
+                        onTap: () {
+                          context.pushRoute(VideoCategoryRoute(
+                              title: e.categoryName ?? 'Video',
+                              categoryId: e.categoryId ?? 0));
+                        },
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                e.categoryName ?? '',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall
+                                    ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 20),
+                              ),
                             ),
-                          ),
-                          const Gap(8),
-                          const Icon(
-                            Icons.chevron_right,
-                            color: kGreyscale50,
-                          ),
-                        ],
+                            const Gap(8),
+                            const Icon(
+                              Icons.chevron_right,
+                              color: kGreyscale50,
+                            ),
+                          ],
+                        ),
                       ),
                       const Gap(24),
                       SizedBox(
