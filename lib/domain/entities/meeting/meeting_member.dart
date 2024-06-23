@@ -35,8 +35,7 @@ class MeetingMember {
       this.agScreenToken,
       this.avatarUrl});
 
-  factory MeetingMember.fromJson(Map<String, dynamic> json) =>
-      _$MeetingMemberFromJson(json);
+  factory MeetingMember.fromJson(Map<String, dynamic> json) => _$MeetingMemberFromJson(json);
 
   Map<String, dynamic> toJson() => _$MeetingMemberToJson(this);
 }

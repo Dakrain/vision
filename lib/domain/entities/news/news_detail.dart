@@ -24,6 +24,5 @@ class NewsDetail extends News {
     super.categoryName,
   });
 
-  factory NewsDetail.fromJson(Map<String, dynamic> json) =>
-      _$NewsDetailFromJson(json);
+  factory NewsDetail.fromJson(Map<String, dynamic> json) => _$NewsDetailFromJson(json);
 }

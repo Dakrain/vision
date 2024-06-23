@@ -8,8 +8,7 @@ import '../requests/requests.dart';
 class AuthenticationImpl implements AuthenticationRepository {
   final AuthenticationService _service;
 
-  AuthenticationImpl({required AuthenticationService service})
-      : _service = service;
+  AuthenticationImpl({required AuthenticationService service}) : _service = service;
 
   @override
   Future<void> logOut() {

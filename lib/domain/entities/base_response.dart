@@ -15,8 +15,7 @@ class BaseResponse<T> {
 
   BaseResponse({this.data, this.error});
 
-  factory BaseResponse.fromJson(
-      Map<String, dynamic> json, T Function(Object? json) fromJsonT) {
+  factory BaseResponse.fromJson(Map<String, dynamic> json, T Function(Object? json) fromJsonT) {
     if (json['code'] != null) {
       return BaseResponse(
         data: null,

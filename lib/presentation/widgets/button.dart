@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton(
-      {super.key, required this.child, this.onPressed, this.height});
+  const PrimaryButton({super.key, required this.child, this.onPressed, this.height});
   final Widget child;
   final void Function()? onPressed;
   final double? height;
@@ -24,8 +23,7 @@ class PrimaryButton extends StatelessWidget {
 }
 
 class SecondaryButton extends StatelessWidget {
-  const SecondaryButton(
-      {super.key, required this.child, this.onPressed, this.height});
+  const SecondaryButton({super.key, required this.child, this.onPressed, this.height});
   final Widget child;
   final void Function()? onPressed;
   final double? height;

@@ -19,8 +19,7 @@ class MeetingInfo {
     this.host,
   });
 
-  factory MeetingInfo.fromJson(Map<String, dynamic> json) =>
-      _$MeetingInfoFromJson(json);
+  factory MeetingInfo.fromJson(Map<String, dynamic> json) => _$MeetingInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$MeetingInfoToJson(this);
 }

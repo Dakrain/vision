@@ -12,14 +12,7 @@ class Host {
   final int? avatar;
   final String? avatarUrl;
 
-  Host(
-      {this.id,
-      this.agUid,
-      this.firstName,
-      this.lastName,
-      this.fullName,
-      this.avatar,
-      this.avatarUrl});
+  Host({this.id, this.agUid, this.firstName, this.lastName, this.fullName, this.avatar, this.avatarUrl});
 
   factory Host.fromJson(Map<String, dynamic> json) => _$HostFromJson(json);
 

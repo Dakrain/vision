@@ -42,14 +42,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 final user = state.user;
 
-                context
-                    .read<AuthenticationBloc>()
-                    .add(AuthenticationEvent.authenticated(user));
+                context.read<AuthenticationBloc>().add(AuthenticationEvent.authenticated(user));
               });
         },
         builder: (context, state) {
-          final String? errorMessage =
-              state.mapOrNull(error: (state) => state.error.message);
+          final String? errorMessage = state.mapOrNull(error: (state) => state.error.message);
 
           return Scaffold(
             backgroundColor: Colors.white,
@@ -77,10 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Center(
                                 child: Text(
                               'Đăng nhập',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineSmall
-                                  ?.copyWith(
+                              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                                     fontWeight: FontWeight.w600,
                                   ),
                             )),
@@ -106,10 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onTap: () {},
                                 child: Text(
                                   'Quên mật khẩu',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium
-                                      ?.copyWith(fontWeight: FontWeight.w500),
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
@@ -134,8 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               final email = _emailController.text;
                               final password = _passwordController.text;
 
-                              context.read<LoginBloc>().add(LoginEvent.login(
-                                  email: email, password: password));
+                              context.read<LoginBloc>().add(LoginEvent.login(email: email, password: password));
                             }
                           },
                         ),
@@ -154,9 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
-                                    ?.copyWith(
-                                        color: kPrimaryColor,
-                                        fontWeight: FontWeight.w600),
+                                    ?.copyWith(color: kPrimaryColor, fontWeight: FontWeight.w600),
                               ),
                             ),
                           ],
@@ -169,10 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                               child: Text(
                                 'Tiếp tục như  khách',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(color: kGreyscale5),
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kGreyscale5),
                               ),
                             ),
                           ),

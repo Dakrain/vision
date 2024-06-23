@@ -37,16 +37,18 @@ class WaitingRoomScreen extends StatelessWidget {
                   const Gap(40),
                   Text(
                     'Vui lòng đợi...',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                        color: Colors.white),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.white),
                   ),
                   const Gap(16),
                   Text(
                     'Người chủ trì cuộc họp sẽ sớm cho bạn vào phòng “Cuộc họp thường niên tháng 9”',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500, color: kGreyscale20),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(fontWeight: FontWeight.w500, color: kGreyscale20),
                     textAlign: TextAlign.center,
                   ),
                 ],

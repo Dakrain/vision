@@ -12,8 +12,7 @@ class AppException extends BaseException {
   AppException({required super.message, required super.code, super.stackTrace});
 
   // Using the error constants here
-  factory AppException.fromException(
-      {Object? exception, StackTrace? stackTrace}) {
+  factory AppException.fromException({Object? exception, StackTrace? stackTrace}) {
     return AppException(
       message: ErrorConstants.defaultErrorCode,
       code: ErrorConstants.defaultErrorCode,
@@ -23,8 +22,7 @@ class AppException extends BaseException {
 }
 
 class NetworkException extends BaseException {
-  NetworkException(
-      {required super.message, required super.code, super.stackTrace});
+  NetworkException({required super.message, required super.code, super.stackTrace});
 
   // Using the error constants here
   factory NetworkException.noNetworkError({StackTrace? stackTrace}) {

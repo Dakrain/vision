@@ -58,10 +58,7 @@ class AudioItem extends StatelessWidget {
               ),
               Text(
                 'Vision 20',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(color: kGreyscale50),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
               ),
               const Gap(8),
               Container(
@@ -74,9 +71,10 @@ class AudioItem extends StatelessWidget {
                     border: Border.all(width: 1, color: kAlternateColorOrange)),
                 child: Text(
                   'Bài học kinh thánh',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: kAlternateColorOrange),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(fontWeight: FontWeight.w500, color: kAlternateColorOrange),
                 ),
               ),
             ],

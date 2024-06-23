@@ -6,8 +6,7 @@ import 'package:injectable/injectable.dart';
 class NetworkProviderImpl extends NetworkProvider {
   late Connectivity connectivity;
 
-  Stream<ConnectivityResult> get onConnectivityChanged =>
-      connectivity.onConnectivityChanged;
+  Stream<ConnectivityResult> get onConnectivityChanged => connectivity.onConnectivityChanged;
 
   NetworkProviderImpl() {
     connectivity = Connectivity();

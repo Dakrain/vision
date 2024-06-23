@@ -30,8 +30,7 @@ abstract class BaseRepository {
         );
       }
     } catch (e, stacktrace) {
-      Future.microtask(
-          () => loggerProvider.log('Error 🚀: ${stacktrace.toString()}'));
+      Future.microtask(() => loggerProvider.log('Error 🚀: ${stacktrace.toString()}'));
 
       throw const ApiError(
         code: ErrorConstants.defaultErrorCode,

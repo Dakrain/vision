@@ -28,16 +28,12 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final textHeight = TextUtils.calculatedTextHeight(Theme.of(context)
-        .textTheme
-        .titleMedium!
-        .copyWith(fontWeight: FontWeight.w600));
+    final textHeight =
+        TextUtils.calculatedTextHeight(Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600));
 
-    final videoItemHeight =
-        MediaQuery.sizeOf(context).height * .20 + (textHeight * 2) + 16;
+    final videoItemHeight = MediaQuery.sizeOf(context).height * .20 + (textHeight * 2) + 16;
 
-    final categoryVideos =
-        BlocBuilder<VideoByCategoryCubit, BasicState<Paging<VideoCategory>>>(
+    final categoryVideos = BlocBuilder<VideoByCategoryCubit, BasicState<Paging<VideoCategory>>>(
       builder: (context, state) {
         return state.when(
           initial: () => const Center(
@@ -56,17 +52,15 @@ class _VideoScreenState extends State<VideoScreen> {
                 final e = data.rows[index];
 
                 return Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                   color: Colors.white,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.pushRoute(VideoCategoryRoute(
-                              title: e.categoryName ?? 'Video',
-                              categoryId: e.categoryId ?? 0));
+                          context.pushRoute(
+                              VideoCategoryRoute(title: e.categoryName ?? 'Video', categoryId: e.categoryId ?? 0));
                         },
                         child: Row(
                           children: [
@@ -76,9 +70,7 @@ class _VideoScreenState extends State<VideoScreen> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 20),
+                                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20),
                               ),
                             ),
                             const Gap(8),
@@ -201,8 +193,7 @@ class _VideoScreenState extends State<VideoScreen> {
           providers: [
             BlocProvider(
               lazy: false,
-              create: (_) => injector<VideoByCategoryCubit>()
-                ..fetchVideosGroupByCategory(),
+              create: (_) => injector<VideoByCategoryCubit>()..fetchVideosGroupByCategory(),
             ),
             BlocProvider(
               lazy: false,

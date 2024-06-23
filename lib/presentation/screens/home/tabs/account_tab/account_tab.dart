@@ -42,17 +42,13 @@ class AccountTab extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 20)),
+                                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20)),
                             Text(
                               context.user?.email ?? '',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      color: kGreyscale50),
+                                  ?.copyWith(fontWeight: FontWeight.w400, color: kGreyscale50),
                             ),
                           ],
                         ),
@@ -66,11 +62,7 @@ class AccountTab extends StatelessWidget {
                             height: 40,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Assets.svg.icons.icUserCircle.svg(),
-                                const Gap(8),
-                                const Text('Đăng nhập')
-                              ],
+                              children: [Assets.svg.icons.icUserCircle.svg(), const Gap(8), const Text('Đăng nhập')],
                             ),
                           ),
                         ),
@@ -81,11 +73,7 @@ class AccountTab extends StatelessWidget {
                             height: 40,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Assets.svg.icons.icLock.svg(),
-                                const Gap(8),
-                                const Text('Đăng ký')
-                              ],
+                              children: [Assets.svg.icons.icLock.svg(), const Gap(8), const Text('Đăng ký')],
                             ),
                           ),
                         )
@@ -157,17 +145,17 @@ class AccountTab extends StatelessWidget {
                 width: double.infinity,
                 child: InkWell(
                   onTap: () {
-                    context
-                        .read<AuthenticationBloc>()
-                        .add(const AuthenticationEvent.logOut());
+                    context.read<AuthenticationBloc>().add(const AuthenticationEvent.logOut());
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     child: Text(
                       'Đăng xuất',
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600, color: kPrimaryColor),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(fontWeight: FontWeight.w600, color: kPrimaryColor),
                     ),
                   ),
                 ),
@@ -199,10 +187,7 @@ class AccountTab extends StatelessWidget {
           const Gap(5),
           Text(
             'Dâng hiến',
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(fontWeight: FontWeight.w500),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
           )
         ],
       ),

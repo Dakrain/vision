@@ -18,8 +18,7 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime createdAtDate =
-        DateTime.fromMillisecondsSinceEpoch((createdAt ?? 1) * 1000);
+    DateTime createdAtDate = DateTime.fromMillisecondsSinceEpoch((createdAt ?? 1) * 1000);
     String formattedDate = DateFormat('dd/MM/yyyy').format(createdAtDate);
 
     return SizedBox(
@@ -53,10 +52,7 @@ class NewsItem extends StatelessWidget {
                 const Gap(8),
                 Text(
                   formattedDate,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: kGreyscale50),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                 )
               ],
             ),

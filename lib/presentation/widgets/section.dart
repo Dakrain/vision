@@ -37,9 +37,7 @@ class Section extends StatelessWidget {
                 return Container(
                   width: double.maxFinite,
                   color: Colors.white,
-                  padding: withPadding
-                      ? const EdgeInsets.symmetric(horizontal: 20, vertical: 12)
-                      : null,
+                  padding: withPadding ? const EdgeInsets.symmetric(horizontal: 20, vertical: 12) : null,
                   child: widget,
                 );
               })

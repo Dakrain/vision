@@ -40,16 +40,11 @@ class DashboardSection extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge
-                                  ?.copyWith(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600),
+                                  ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
                             ),
                             const Gap(4),
                             Text(shortDescription,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(color: kGreyscale50)),
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50)),
                           ],
                         ),
                       ),

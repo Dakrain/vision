@@ -22,8 +22,7 @@ class NewsDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => injector<NewsDetailCubit>()
-        ..fetchNewsDetail(news.id.toString(), news.type ?? 2),
+      create: (context) => injector<NewsDetailCubit>()..fetchNewsDetail(news.id.toString(), news.type ?? 2),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Tin tức'),
@@ -36,10 +35,7 @@ class NewsDetailScreen extends StatelessWidget {
             children: [
               Text(
                 news.title ?? '',
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall
-                    ?.copyWith(fontWeight: FontWeight.w600),
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
               ),
               const Gap(8),
               Row(
@@ -47,12 +43,8 @@ class NewsDetailScreen extends StatelessWidget {
                   Assets.svg.icons.icClock.svg(),
                   const Gap(8),
                   Text(
-                    DateTimeUtils.getFormattedDateFromTimestamp(
-                        news.createdAt ?? 0, 'dd/MM/yyyy'),
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: kGreyscale50),
+                    DateTimeUtils.getFormattedDateFromTimestamp(news.createdAt ?? 0, 'dd/MM/yyyy'),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                   ),
                 ],
               ),
@@ -82,8 +74,7 @@ class NewsDetailScreen extends StatelessWidget {
                             return launchUrl(Uri.parse(url));
                           },
                         ),
-                        if (state.model.relatedNews != null &&
-                            state.model.relatedNews!.isNotEmpty) ...[
+                        if (state.model.relatedNews != null && state.model.relatedNews!.isNotEmpty) ...[
                           const Gap(24),
                           const Divider(),
                           const Gap(24),
@@ -92,8 +83,7 @@ class NewsDetailScreen extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineSmall
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 20),
+                                ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20),
                           ),
                           const Gap(24),
                           ListView.separated(
@@ -102,12 +92,10 @@ class NewsDetailScreen extends StatelessWidget {
                             itemCount: state.model.relatedNews!.length,
                             separatorBuilder: (context, index) => const Gap(16),
                             itemBuilder: (context, index) {
-                              final relatedNews =
-                                  state.model.relatedNews![index];
+                              final relatedNews = state.model.relatedNews![index];
                               return GestureDetector(
                                 onTap: () {
-                                  context.pushRoute(
-                                      NewsDetailRoute(news: relatedNews));
+                                  context.pushRoute(NewsDetailRoute(news: relatedNews));
                                 },
                                 child: NewsItem(
                                   imageUrl: relatedNews.imageUrl,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_base_project/data/interceptor/auth.interceptor.dart';
 import 'package:flutter_base_project/data/interceptor/response.interceptor.dart';
@@ -20,9 +18,7 @@ abstract class NetworkModule {
     dio.interceptors.add(ResponseInterceptor());
 
     dio.interceptors.add(AuthenInterceptor(
-        version: '${packageInfo.version}.${packageInfo.buildNumber}',
-        uuid: 'N/A',
-        storageProvider: storageProvider));
+        version: '${packageInfo.version}.${packageInfo.buildNumber}', uuid: 'N/A', storageProvider: storageProvider));
 
     dio.options.followRedirects = false;
     dio.options.validateStatus = (status) {
@@ -34,18 +30,13 @@ abstract class NetworkModule {
   AuthenticationService provideAuthenService(Dio dio) =>
       AuthenticationService(dio, baseUrl: 'https://api.vision20.us/v1');
 
-  EventService provideEventService(Dio dio) =>
-      EventService(dio, baseUrl: 'https://api.vision20.us/v1');
+  EventService provideEventService(Dio dio) => EventService(dio, baseUrl: 'https://api.vision20.us/v1');
 
-  ShopService provideShopService(Dio dio) =>
-      ShopService(dio, baseUrl: 'https://api.vision20.us/v1');
+  ShopService provideShopService(Dio dio) => ShopService(dio, baseUrl: 'https://api.vision20.us/v1');
 
-  NewsService provideNewsService(Dio dio) =>
-      NewsService(dio, baseUrl: 'https://api.vision20.us/v1');
+  NewsService provideNewsService(Dio dio) => NewsService(dio, baseUrl: 'https://api.vision20.us/v1');
 
-  VideoService provideVideoService(Dio dio) =>
-      VideoService(dio, baseUrl: 'https://api.vision20.us/v1');
+  VideoService provideVideoService(Dio dio) => VideoService(dio, baseUrl: 'https://api.vision20.us/v1');
 
-  MeetingService provideMeetingService(Dio dio) =>
-      MeetingService(dio, baseUrl: 'https://api.vision20.us/v1');
+  MeetingService provideMeetingService(Dio dio) => MeetingService(dio, baseUrl: 'https://api.vision20.us/v1');
 }

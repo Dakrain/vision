@@ -56,22 +56,22 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
               log('🚀[onJoinChannelSuccess] connection: ${connection.toJson()} elapsed: $elapsed');
             },
             onActiveSpeaker: (connection, uid) {
-              print('Agora🚀: onActiveSpeaker $connection $uid');
+              log('Agora🚀: onActiveSpeaker $connection $uid');
             },
             onUserJoined: (connection, remoteUid, elapsed) {
               log('🚀[onUserJoined] connection: ${connection.toJson()} remoteUid: $remoteUid elapsed: $elapsed');
             },
             onUserOffline: (connection, remoteUid, reason) {
-              print('Agora🚀: onUserOffline $connection $remoteUid $reason');
+              log('Agora🚀: onUserOffline $connection $remoteUid $reason');
             },
             onLeaveChannel: (connection, stats) {
               log('🚀[onLeaveChannel] connection: ${connection.toJson()} stats: ${stats.toJson()}');
             },
             onCameraReady: () {
-              print('Agora🚀: onCameraReady');
+              log('Agora🚀: onCameraReady');
             },
             onError: (err, msg) {
-              print('Agora🚀: onError $err $msg');
+              log('Agora🚀: onError $err $msg');
             },
           ));
         },
@@ -82,7 +82,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
   //006c2c92894c294415d9af39e31bcec8832IABquz9NqU/8LBV7Uq1rONLibHCaAFrsUFxmXzSJtCMzUZg2rDiosnNhIgBxvggCJ1F1ZgQAAQD/////AgD/////AwD/////BAD/////
 
   Future<void> requestPermission() async {
-    final result = await <Permission>[
+    await <Permission>[
       Permission.camera,
       Permission.microphone,
     ].request();

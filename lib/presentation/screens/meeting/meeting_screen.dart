@@ -1,4 +1,3 @@
-
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -34,16 +33,14 @@ class _MeetingScreenState extends State<MeetingScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       lazy: false,
-      create: (context) =>
-          injector<MeetingBloc>()..add(MeetingEvent.join(widget.meetingInfo)),
+      create: (context) => injector<MeetingBloc>()..add(MeetingEvent.join(widget.meetingInfo)),
       child: Scaffold(
         backgroundColor: kGreyscale90,
         body: SafeArea(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 16, left: 20, right: 12, bottom: 16),
+                padding: const EdgeInsets.only(top: 16, left: 20, right: 12, bottom: 16),
                 child: Row(
                   children: [
                     Expanded(
@@ -52,10 +49,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                           Expanded(
                             child: Text(
                               widget.meetingInfo.room?.title ?? '',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.white),
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -71,9 +65,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     const Gap(16),
                     InkWell(
                       onTap: () {
-                        injector<AgoraProvider>()
-                            .engine
-                            .setEnableSpeakerphone(true);
+                        injector<AgoraProvider>().engine.setEnableSpeakerphone(true);
                       },
                       child: Assets.svg.icons.icSpeaker.svg(),
                     ),
@@ -194,8 +186,9 @@ class _MeetingScreenState extends State<MeetingScreen> {
             if (widget.meetingInfo.user?.role == 1)
               TextButton(
                 onPressed: () {
-                  context.read<MeetingBloc>().add(MeetingEvent.endMeeting(
-                      widget.meetingInfo.room?.id.toString() ?? ''));
+                  context
+                      .read<MeetingBloc>()
+                      .add(MeetingEvent.endMeeting(widget.meetingInfo.room?.id.toString() ?? ''));
                 },
                 child: const Text('Kết thúc cuộc họp'),
               ),
@@ -207,8 +200,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
             ),
             TextButton(
               onPressed: () {
-                context.read<MeetingBloc>().add(MeetingEvent.leaveRoom(
-                    widget.meetingInfo.room?.id.toString() ?? ''));
+                context.read<MeetingBloc>().add(MeetingEvent.leaveRoom(widget.meetingInfo.room?.id.toString() ?? ''));
               },
               child: const Text('Thoát'),
             ),

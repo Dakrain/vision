@@ -79,8 +79,7 @@ class DashboardTab extends StatelessWidget {
                           children: smallNews
                               .map((news) => GestureDetector(
                                     onTap: () {
-                                      context.pushRoute(
-                                          NewsDetailRoute(news: news));
+                                      context.pushRoute(NewsDetailRoute(news: news));
                                     },
                                     child: NewsItem(
                                       imageUrl: news.imageUrl,
@@ -120,8 +119,7 @@ class DashboardTab extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: MediaQuery.sizeOf(context).height * 0.22 +
-                    MediaQuery.paddingOf(context).top,
+                height: MediaQuery.sizeOf(context).height * 0.22 + MediaQuery.paddingOf(context).top,
                 width: double.maxFinite,
                 decoration: const BoxDecoration(
                   color: kPrimaryColor,
@@ -142,17 +140,11 @@ class DashboardTab extends StatelessWidget {
                           children: [
                             Text(
                               'Xin chào ',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.white),
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
                             ),
                             Text(
                               context.user?.fullName ?? 'Khách',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -168,17 +160,15 @@ class DashboardTab extends StatelessWidget {
                     const Gap(24),
                     Container(
                       padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: kShadow,
-                              offset: Offset(0, 8),
-                              blurRadius: 16,
-                              spreadRadius: 0,
-                            ),
-                          ]),
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white, boxShadow: const [
+                        BoxShadow(
+                          color: kShadow,
+                          offset: Offset(0, 8),
+                          blurRadius: 16,
+                          spreadRadius: 0,
+                        ),
+                      ]),
                       child: Material(
                         color: Colors.white,
                         child: SizedBox(
@@ -190,15 +180,11 @@ class DashboardTab extends StatelessWidget {
                               QuickAsset(
                                   title: 'Tạo cuộc họp',
                                   onTap: () {
-                                    context.pushRoute(
-                                        MeetingSetupRoute(isEdit: false));
+                                    context.pushRoute(MeetingSetupRoute(isEdit: false));
                                   },
-                                  asset:
-                                      Assets.svg.icons.icDashboardMeeting.path),
+                                  asset: Assets.svg.icons.icDashboardMeeting.path),
                               QuickAsset(
-                                  title: 'Livestream',
-                                  onTap: () {},
-                                  asset: Assets.svg.icons.icDashboardLive.path),
+                                  title: 'Livestream', onTap: () {}, asset: Assets.svg.icons.icDashboardLive.path),
                               QuickAsset(
                                   title: 'Mua sắm online',
                                   onTap: () {
@@ -206,10 +192,7 @@ class DashboardTab extends StatelessWidget {
                                   },
                                   asset: Assets.svg.icons.icDashboardShop.path),
                               QuickAsset(
-                                  title: 'Hội nghị',
-                                  onTap: () {},
-                                  asset: Assets
-                                      .svg.icons.icDashboardConference.path),
+                                  title: 'Hội nghị', onTap: () {}, asset: Assets.svg.icons.icDashboardConference.path),
                               QuickAsset(
                                   title: 'Tin tức',
                                   onTap: () {
@@ -272,12 +255,10 @@ class DashboardTab extends StatelessWidget {
                       builder: (context, state) {
                         return DashboardSection(
                           title: 'Cửa hàng Vision',
-                          shortDescription:
-                              'Khám phá những sản phẩm mới trên Vision 20',
+                          shortDescription: 'Khám phá những sản phẩm mới trên Vision 20',
                           onTap: () {},
                           child: SingleChildScrollView(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 24),
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24),
                             scrollDirection: Axis.horizontal,
                             child: state.maybeMap(
                               success: (value) => Row(
@@ -324,15 +305,13 @@ class DashboardTab extends StatelessWidget {
                       builder: (context, state) {
                         return DashboardSection(
                           title: 'Video mới nhất',
-                          shortDescription:
-                              'Chia sẻ những bài giảng từ các mục sư trên toàn thế giới',
+                          shortDescription: 'Chia sẻ những bài giảng từ các mục sư trên toàn thế giới',
                           onTap: () {
                             context.pushRoute(const VideoRoute());
                           },
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 24, horizontal: 20),
+                            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
                             child: state.maybeMap(
                               initial: (value) => const Shimmers(
                                 child: VideoItem(
@@ -345,9 +324,7 @@ class DashboardTab extends StatelessWidget {
                                       .take(3)
                                       .map((video) => GestureDetector(
                                             onTap: () {
-                                              context.pushRoute(
-                                                  VideoDetailRoute(
-                                                      video: video));
+                                              context.pushRoute(VideoDetailRoute(video: video));
                                             },
                                             child: VideoItem(
                                               imageUrl: video.thumbnailUrl,

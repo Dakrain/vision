@@ -10,8 +10,8 @@ const kBoxShadow = BoxShadow(
 );
 
 const kBoxShadow2 = BoxShadow(
-   color: kShadowGreyscale,
-                  offset: Offset(0, -4),
-                  blurRadius: 8,
-                  spreadRadius: 1,
+  color: kShadowGreyscale,
+  offset: Offset(0, -4),
+  blurRadius: 8,
+  spreadRadius: 1,
 );

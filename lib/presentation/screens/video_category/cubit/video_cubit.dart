@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_base_project/core/base/basic_state.dart';
 import 'package:flutter_base_project/domain/domain.dart';
 import 'package:injectable/injectable.dart';

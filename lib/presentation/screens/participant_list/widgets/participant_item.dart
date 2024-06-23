@@ -21,13 +21,12 @@ class ParticipantItem extends StatelessWidget {
         const Expanded(child: Text('Admin 1 (Người chủ trì,  tôi)')),
         const Gap(16),
         InkWell(
-          onTap: () {},
-          child: Assets.svg.icons.icMic.svg(color: kGreyscale50),
-        ),
+            onTap: () {},
+            child: Assets.svg.icons.icMic.svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn))),
         const Gap(8),
         InkWell(
           onTap: () {},
-          child: Assets.svg.icons.icCamera.svg(color: kGreyscale50),
+          child: Assets.svg.icons.icCamera.svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
         ),
       ],
     );

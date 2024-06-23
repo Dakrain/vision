@@ -52,15 +52,10 @@ class LanguageTile extends StatelessWidget {
               Expanded(
                   child: Text(
                 title,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontWeight: FontWeight.w500),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
               )),
               const Gap(16),
-              selected
-                  ? Assets.svg.icons.icRadioChecked.svg()
-                  : Assets.svg.icons.icRadioUncheck.svg()
+              selected ? Assets.svg.icons.icRadioChecked.svg() : Assets.svg.icons.icRadioUncheck.svg()
             ],
           ),
         ),

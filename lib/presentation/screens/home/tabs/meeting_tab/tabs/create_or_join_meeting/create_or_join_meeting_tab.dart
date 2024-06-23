@@ -48,10 +48,8 @@ class _CreateOrJoinMeetingTabState extends State<CreateOrJoinMeetingTab> {
                     Assets.svg.images.imgConferenceGuide1.svg(),
                     Text(
                       'Lên lịch cho cuộc họp',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
+                      style:
+                          Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                     const Gap(16),
                     const Text(
@@ -65,10 +63,8 @@ class _CreateOrJoinMeetingTabState extends State<CreateOrJoinMeetingTab> {
                     Assets.svg.images.imgConferenceGuide2.svg(),
                     Text(
                       'Nhận đường liên kết mà bạn\ncó thể chia sẻ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
+                      style:
+                          Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
                       textAlign: TextAlign.center,
                     ),
                     const Gap(16),

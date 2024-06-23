@@ -41,17 +41,11 @@ class AddMembersScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Nguyen Van B',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.w600),
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                             ),
                             Text(
                               'nguyenvanb@gmail.com',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(color: kGreyscale50),
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                             )
                           ],
                         ),

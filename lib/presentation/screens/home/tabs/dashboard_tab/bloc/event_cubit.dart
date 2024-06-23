@@ -1,4 +1,3 @@
-
 import 'package:flutter_base_project/core/base/basic_state.dart';
 import 'package:flutter_base_project/domain/entities/paging.dart';
 import 'package:flutter_base_project/domain/entities/event/event.dart';

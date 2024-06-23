@@ -7,14 +7,10 @@ import '../../domain/repositories/repositories.dart';
 import '../requests/requests.dart';
 
 @Injectable(as: MeetingRepository)
-class MeetingRepositoryImpl extends BaseRepository
-    implements MeetingRepository {
+class MeetingRepositoryImpl extends BaseRepository implements MeetingRepository {
   final MeetingService service;
 
-  MeetingRepositoryImpl(
-      {required this.service,
-      required super.networkProvider,
-      required super.loggerProvider});
+  MeetingRepositoryImpl({required this.service, required super.networkProvider, required super.loggerProvider});
 
   @override
   Future<MeetingInfo> createMeeting(
@@ -42,9 +38,7 @@ class MeetingRepositoryImpl extends BaseRepository
         muteAllChat: enableChat,
         isRecording: isRecording,
         multipleShareScreen: multipleShareScreen,
-        invite: invite
-            ?.map((e) => Invite(userId: e['userId'], role: e['role']))
-            .toList());
+        invite: invite?.map((e) => Invite(userId: e['userId'], role: e['role'])).toList());
 
     return execute(service.createMeeting(request: request));
   }
@@ -55,33 +49,26 @@ class MeetingRepositoryImpl extends BaseRepository
   }
 
   @override
-  Future<JoinMeetingInfo> joinMeeting(
-      {required String visionMeetingKey, required String visionMeetingPwd}) {
-    final request = JoinMeetingRequest(
-        visionMeetingKey: visionMeetingKey, visionMeetingPwd: visionMeetingPwd);
+  Future<JoinMeetingInfo> joinMeeting({required String visionMeetingKey, required String visionMeetingPwd}) {
+    final request = JoinMeetingRequest(visionMeetingKey: visionMeetingKey, visionMeetingPwd: visionMeetingPwd);
     return execute(service.joinMeeting(request: request));
   }
 
   @override
-  Future<StatusResponse> addUserToMeeting(
-      String meetingId, Map<String, int> request) {
+  Future<StatusResponse> addUserToMeeting(String meetingId, Map<String, int> request) {
     return execute(service.addUserToMeeting(meetingId, request));
   }
 
   @override
-  Future<StatusResponse> changeStatusUser(
-      String meetingId, String userId, Map<String, bool> request) {
+  Future<StatusResponse> changeStatusUser(String meetingId, String userId, Map<String, bool> request) {
     return execute(service.changeStatusUser(meetingId, userId, request));
   }
 
   @override
-  Future<ChangeUserSetting> changeUserSetting(String meetingId, int? userId,
-      int? enableAudio, int? enableVideo, int? shareScreen) {
+  Future<ChangeUserSetting> changeUserSetting(
+      String meetingId, int? userId, int? enableAudio, int? enableVideo, int? shareScreen) {
     final request = ChangeUserSettingRequest(
-        userId: userId,
-        enableAudio: enableAudio,
-        enableVideo: enableVideo,
-        shareScreen: shareScreen);
+        userId: userId, enableAudio: enableAudio, enableVideo: enableVideo, shareScreen: shareScreen);
 
     return execute(service.changeUserSetting(meetingId, request));
   }
@@ -132,9 +119,7 @@ class MeetingRepositoryImpl extends BaseRepository
         muteAllChat: enableChat,
         isRecording: isRecording,
         multipleShareScreen: multipleShareScreen,
-        invite: invite
-            ?.map((e) => Invite(userId: e['userId'], role: e['role']))
-            .toList());
+        invite: invite?.map((e) => Invite(userId: e['userId'], role: e['role'])).toList());
 
     return execute(service.updateMeeting(request: request));
   }

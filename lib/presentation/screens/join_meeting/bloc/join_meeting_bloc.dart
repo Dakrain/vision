@@ -16,8 +16,7 @@ class JoinMeetingBloc extends Bloc<JoinMeetingEvent, JoinMeetingState> {
       await event.map(
         joinMeeting: (e) async {
           emit(const JoinMeetingState.loading());
-          final result = await usecase.joinMeeting(
-              visionMeetingKey: e.id, visionMeetingPwd: e.password);
+          final result = await usecase.joinMeeting(visionMeetingKey: e.id, visionMeetingPwd: e.password);
 
           await result.fold(
             (error) async => emit(JoinMeetingState.error(error)),
@@ -29,8 +28,7 @@ class JoinMeetingBloc extends Bloc<JoinMeetingEvent, JoinMeetingState> {
 
                 case 2:
                   //Can join
-                  final result = await usecase
-                      .fetchMeetingDetail(meeting.id?.toString() ?? '');
+                  final result = await usecase.fetchMeetingDetail(meeting.id?.toString() ?? '');
                   result.fold(
                     (error) => emit(JoinMeetingState.error(error)),
                     (meeting) {

@@ -19,6 +19,7 @@ class _LocalVideoViewState extends State<LocalVideoView> {
   double initX = 0;
   double initY = 0;
 
+  // ignore: unused_element
   void _handleDrag(DragStartDetails details) {
     setState(() {
       initX = details.globalPosition.dx;
@@ -26,6 +27,7 @@ class _LocalVideoViewState extends State<LocalVideoView> {
     });
   }
 
+  // ignore: unused_element
   void _handleUpdate(DragUpdateDetails details) {
     final double dx = initX - details.globalPosition.dx;
     final double dy = initY - details.globalPosition.dy;

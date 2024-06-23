@@ -10,6 +10,5 @@ class ChatInfo {
     this.userGroupChannels,
   });
 
-  factory ChatInfo.fromJson(Map<String, dynamic> json) =>
-      _$ChatInfoFromJson(json);
+  factory ChatInfo.fromJson(Map<String, dynamic> json) => _$ChatInfoFromJson(json);
 }

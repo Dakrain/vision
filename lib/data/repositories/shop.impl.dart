@@ -21,8 +21,7 @@ class ShopRepositoryImpl extends BaseRepository implements ShopRepository {
   }
 
   @override
-  Future<Paging<Product>> getProducts(
-      {int? pageNumber, int? categoryId, String? name, String? sortBy}) {
+  Future<Paging<Product>> getProducts({int? pageNumber, int? categoryId, String? name, String? sortBy}) {
     return execute(service.getProducts(
       pageNumber: pageNumber,
       categoryId: categoryId,

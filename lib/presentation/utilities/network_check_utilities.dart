@@ -10,8 +10,7 @@ class NetworkCheckUtilities {
     required VoidCallback noNetworkCallback,
     required VoidCallback gotNetworkCallback,
   }) {
-    StreamSubscription<ConnectivityResult> sub =
-        Connectivity().onConnectivityChanged.listen((event) {
+    StreamSubscription<ConnectivityResult> _ = Connectivity().onConnectivityChanged.listen((event) {
       switch (event) {
         case ConnectivityResult.none:
           noNetworkCallback();

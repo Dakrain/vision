@@ -1,4 +1,3 @@
 import 'package:dio/dio.dart';
 
-class ResponseInterceptor extends Interceptor {
-}
+class ResponseInterceptor extends Interceptor {}

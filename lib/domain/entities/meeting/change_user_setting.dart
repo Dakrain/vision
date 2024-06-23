@@ -22,6 +22,5 @@ class ChangeUserSetting {
     this.shareScreenUser,
   });
 
-  factory ChangeUserSetting.fromJson(Map<String, dynamic> json) =>
-      _$ChangeUserSettingFromJson(json);
+  factory ChangeUserSetting.fromJson(Map<String, dynamic> json) => _$ChangeUserSettingFromJson(json);
 }

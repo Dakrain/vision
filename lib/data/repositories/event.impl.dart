@@ -13,10 +13,7 @@ import '../../domain/repositories/repositories.dart';
 class EventRepositoryImpl extends BaseRepository implements EventRepository {
   final EventService service;
 
-  EventRepositoryImpl(
-      {required this.service,
-      required super.networkProvider,
-      required super.loggerProvider});
+  EventRepositoryImpl({required this.service, required super.networkProvider, required super.loggerProvider});
 
   @override
   Future<EventDetail> getEventDetail({required String eventId}) async {

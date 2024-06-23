@@ -44,8 +44,7 @@ class MeetingUsecase {
     }
   }
 
-  Future<Either<ApiError, MeetingInfo>> fetchMeetingDetail(
-      String meetingId) async {
+  Future<Either<ApiError, MeetingInfo>> fetchMeetingDetail(String meetingId) async {
     try {
       final result = await repository.fetchMeetingDetail(meetingId);
       return Right(result);
@@ -135,8 +134,7 @@ class MeetingUsecase {
     }
   }
 
-  Future<Either<ApiError, Paging<MeetingMember>>> fetchMeetingUsers(
-      String meetingId) async {
+  Future<Either<ApiError, Paging<MeetingMember>>> fetchMeetingUsers(String meetingId) async {
     try {
       final result = await repository.fetchMeetingUsers(meetingId);
       return Right(result);

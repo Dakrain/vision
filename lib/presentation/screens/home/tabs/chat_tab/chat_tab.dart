@@ -18,10 +18,7 @@ class ChatTab extends StatelessWidget {
             title: const Text('Tin nhắn'),
             centerTitle: true,
             leading: const SizedBox(),
-            titleTextStyle: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(fontWeight: FontWeight.w600),
+            titleTextStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
             bottom: const TabBar(
                 indicatorWeight: 1,
                 labelPadding: EdgeInsets.zero,
@@ -31,8 +28,7 @@ class ChatTab extends StatelessWidget {
                 indicatorPadding: EdgeInsets.zero,
                 indicatorSize: TabBarIndicatorSize.tab,
                 unselectedLabelColor: kGreyscale50,
-                indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(color: kPrimaryColor, width: 2)),
+                indicator: UnderlineTabIndicator(borderSide: BorderSide(color: kPrimaryColor, width: 2)),
                 tabs: [
                   Tab(
                     text: 'Trò chuyện',

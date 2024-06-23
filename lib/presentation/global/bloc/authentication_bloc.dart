@@ -9,12 +9,10 @@ part 'authentication_state.dart';
 part 'authentication_bloc.freezed.dart';
 
 @singleton
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthenticationUseCase useCase;
 
-  AuthenticationBloc(this.useCase)
-      : super(const AuthenticationState.unAuthenticated()) {
+  AuthenticationBloc(this.useCase) : super(const AuthenticationState.unAuthenticated()) {
     on<AuthenticationEvent>((event, emit) {});
     on<_AuthenticatedEvent>((event, emit) => emit(
           AuthenticationState.authenticated(user: event.user),

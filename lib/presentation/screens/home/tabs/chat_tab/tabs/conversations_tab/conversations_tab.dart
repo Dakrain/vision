@@ -42,8 +42,8 @@ class ConversationItem extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: 24,
-                backgroundImage: CachedNetworkImageProvider(
-                    'https://i.scdn.co/image/ab67616d0000b273cdcfcac8bef5d30e43fee7b1'),
+                backgroundImage:
+                    CachedNetworkImageProvider('https://i.scdn.co/image/ab67616d0000b273cdcfcac8bef5d30e43fee7b1'),
               ),
               const Gap(16),
               Expanded(
@@ -56,26 +56,22 @@ class ConversationItem extends StatelessWidget {
                         Expanded(
                           child: Text(
                             'Trần Thị B',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(fontWeight: FontWeight.w600),
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                           ),
                         ),
                         Text(
                           'Chủ nhật',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(color: kGreyscale50),
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                         )
                       ],
                     ),
                     const Gap(4),
                     Text(
                       'Bạn: Cảm ơn bạn nha. Hy vọng trong...',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w400, color: kGreyscale50),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(fontWeight: FontWeight.w400, color: kGreyscale50),
                     )
                   ],
                 ),

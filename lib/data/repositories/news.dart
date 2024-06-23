@@ -17,15 +17,12 @@ class NewsRepositoryImpl extends BaseRepository implements NewsRepository {
   });
 
   @override
-  Future<Paging<News>> getHighlightNews(
-      {required String type, String? title, int? categoryId}) {
-    return execute(service.getHighlightNews(
-        type: type, title: title, categoryId: categoryId));
+  Future<Paging<News>> getHighlightNews({required String type, String? title, int? categoryId}) {
+    return execute(service.getHighlightNews(type: type, title: title, categoryId: categoryId));
   }
 
   @override
-  Future<Paging<News>> getNews(
-      {required String type, String? title, int? categoryId, int? pageNumber}) {
+  Future<Paging<News>> getNews({required String type, String? title, int? categoryId, int? pageNumber}) {
     return execute(service.getNews(
       type: type,
       title: title,
@@ -40,8 +37,7 @@ class NewsRepositoryImpl extends BaseRepository implements NewsRepository {
   }
 
   @override
-  Future<Paging<News>> getRelatedNews(
-      {required String type, required String id}) {
+  Future<Paging<News>> getRelatedNews({required String type, required String id}) {
     return execute(service.getRelatedNews(type: type, id: id));
   }
 }

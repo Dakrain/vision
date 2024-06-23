@@ -42,8 +42,7 @@ class VideoCategoryScreen extends StatelessWidget {
                   return ListView.separated(
                     separatorBuilder: (context, index) => const Gap(16),
                     itemCount: value.data.rows.length,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                     itemBuilder: (context, index) {
                       final item = value.data.rows[index];
                       return GestureDetector(
@@ -65,9 +64,7 @@ class VideoCategoryScreen extends StatelessWidget {
                                       CachedImage(
                                         imageUrl: item.thumbnailUrl,
                                         width: double.maxFinite,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                .1,
+                                        height: MediaQuery.sizeOf(context).height * .1,
                                         fit: BoxFit.cover,
                                       ),
                                       Align(
@@ -96,10 +93,8 @@ class VideoCategoryScreen extends StatelessWidget {
                                     item.title ?? '',
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium
-                                        ?.copyWith(fontWeight: FontWeight.w600),
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
                                   )),
                             ],
                           ),
@@ -108,8 +103,7 @@ class VideoCategoryScreen extends StatelessWidget {
                     },
                   );
                 },
-                loading: (_) =>
-                    const Center(child: CircularProgressIndicator.adaptive()),
+                loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
                 orElse: () => const SizedBox(),
               );
             },

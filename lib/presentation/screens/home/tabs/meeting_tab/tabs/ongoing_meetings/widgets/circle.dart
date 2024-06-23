@@ -15,12 +15,8 @@ class CircleAsset extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(4),
-      decoration:
-          BoxDecoration(shape: BoxShape.circle, color: color.withOpacity(.1)),
-      child: SvgPicture.asset(
-        path,
-        color: color,
-      ),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: color.withOpacity(.1)),
+      child: SvgPicture.asset(path, colorFilter: ColorFilter.mode(color, BlendMode.srcIn)),
     );
   }
 }

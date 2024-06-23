@@ -38,6 +38,5 @@ class EventDetail extends Event {
     super.imageUrl,
   });
 
-  factory EventDetail.fromJson(Map<String, dynamic> json) =>
-      _$EventDetailFromJson(json);
+  factory EventDetail.fromJson(Map<String, dynamic> json) => _$EventDetailFromJson(json);
 }

@@ -12,13 +12,11 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundImage: url != null && url!.isNotEmpty
-          ? CachedNetworkImageProvider(url ?? '')
-          : null,
+      backgroundImage: url != null && url!.isNotEmpty ? CachedNetworkImageProvider(url ?? '') : null,
       backgroundColor: kPrimaryColor,
       child: url == null || url!.isEmpty
           ? Assets.svg.icons.icPerson
-              .svg(width: radius, height: radius, color: Colors.white)
+              .svg(width: radius, height: radius, colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn))
           : null,
     );
   }

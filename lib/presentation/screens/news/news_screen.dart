@@ -35,8 +35,7 @@ class _NewsScreenState extends State<NewsScreen> {
                 children: [
                   const Divider(color: kGreyscale10, thickness: 8, height: 8),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -45,8 +44,7 @@ class _NewsScreenState extends State<NewsScreen> {
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall
-                              ?.copyWith(
-                                  fontWeight: FontWeight.w600, fontSize: 20),
+                              ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20),
                         ),
                         ListView.separated(
                           padding: const EdgeInsets.symmetric(vertical: 24),
@@ -58,8 +56,7 @@ class _NewsScreenState extends State<NewsScreen> {
                             final news = value.data.rows[index];
                             return GestureDetector(
                               onTap: () {
-                                context.router
-                                    .push(NewsDetailRoute(news: news));
+                                context.router.push(NewsDetailRoute(news: news));
                               },
                               child: NewsItem(
                                 imageUrl: news.imageUrl,
@@ -79,8 +76,7 @@ class _NewsScreenState extends State<NewsScreen> {
       },
     );
 
-    final hightLightSection =
-        BlocBuilder<HightLightNewsCubit, BasicState<Paging<News>>>(
+    final hightLightSection = BlocBuilder<HightLightNewsCubit, BasicState<Paging<News>>>(
       builder: (context, state) {
         return state.maybeMap(
             loading: (value) {
@@ -103,12 +99,10 @@ class _NewsScreenState extends State<NewsScreen> {
                               final news = value.data.rows[index];
 
                               return Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: GestureDetector(
                                   onTap: () {
-                                    context.router
-                                        .push(NewsDetailRoute(news: news));
+                                    context.router.push(NewsDetailRoute(news: news));
                                   },
                                   child: HighlightNews(
                                     imageUrl: news.imageUrl,
@@ -153,8 +147,7 @@ class _NewsScreenState extends State<NewsScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              injector<HightLightNewsCubit>()..getHightLightNews(),
+          create: (context) => injector<HightLightNewsCubit>()..getHightLightNews(),
         ),
         BlocProvider(
           create: (context) => injector<NewsCubit>()..getNews(),

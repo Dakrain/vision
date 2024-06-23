@@ -14,10 +14,8 @@ class EventItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-          boxShadow: const [kBoxShadow2],
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8)),
+      decoration:
+          BoxDecoration(boxShadow: const [kBoxShadow2], color: Colors.white, borderRadius: BorderRadius.circular(8)),
       child: Column(
         children: [
           Row(
@@ -31,18 +29,14 @@ class EventItem extends StatelessWidget {
                   children: [
                     Text(
                       'Kỳ Hiệp Nguyện, Kiêng Ăn',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                     ),
                     Row(
                       children: [
                         Row(
                           children: [
                             Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 6),
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                 decoration: const BoxDecoration(
                                   color: kAlternateColorGreen,
                                 ),
@@ -51,9 +45,7 @@ class EventItem extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyMedium
-                                      ?.copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
+                                      ?.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                                 )),
                           ],
                         ),
@@ -63,9 +55,7 @@ class EventItem extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
-                              ?.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: kPrimaryColor),
+                              ?.copyWith(fontWeight: FontWeight.w600, color: kPrimaryColor),
                         ),
                       ],
                     )
@@ -141,16 +131,13 @@ class EventItem extends StatelessWidget {
                       child: InkWell(
                         onTap: () {},
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 2, horizontal: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                           child: Text(
                             'Tham gia',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: kPrimaryColor),
+                                ?.copyWith(fontWeight: FontWeight.w600, color: kPrimaryColor),
                           ),
                         ),
                       ),
@@ -164,14 +151,9 @@ class EventItem extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
-                              ?.copyWith(
-                                  color: kGreyscale80,
-                                  fontWeight: FontWeight.w500))
+                              ?.copyWith(color: kGreyscale80, fontWeight: FontWeight.w500))
                     ]),
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: kGreyscale50),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                   )
                 ],
               ),
@@ -190,8 +172,7 @@ class CustomTicketClipper extends CustomClipper<Path> {
 
     path.moveTo(0, size.height);
     path.lineTo(size.width, size.height);
-    path.quadraticBezierTo(size.width * 0.75, size.height + 20,
-        size.width * 0.25, size.height + 20);
+    path.quadraticBezierTo(size.width * 0.75, size.height + 20, size.width * 0.25, size.height + 20);
     path.lineTo(0, size.height + 20);
     path.close();
 

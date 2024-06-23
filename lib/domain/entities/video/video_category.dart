@@ -25,6 +25,5 @@ class VideoCategory {
     this.videos = const [],
   });
 
-  factory VideoCategory.fromJson(Map<String, dynamic> json) =>
-      _$VideoCategoryFromJson(json);
+  factory VideoCategory.fromJson(Map<String, dynamic> json) => _$VideoCategoryFromJson(json);
 }

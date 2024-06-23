@@ -27,8 +27,7 @@ class VideoRepositoryImpl extends BaseRepository implements VideoRepository {
 
   @override
   Future<Paging<Video>> fetchVideos({int? categoryId, int? pageNumber}) {
-    return execute(
-        service.getVideos(pageNumber: pageNumber, categoryId: categoryId));
+    return execute(service.getVideos(pageNumber: pageNumber, categoryId: categoryId));
   }
 
   @override

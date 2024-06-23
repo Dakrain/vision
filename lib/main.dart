@@ -49,22 +49,19 @@ void main() async {
     ..textColor = kGreyscale80
     ..radius = 8
     ..contentPadding = const EdgeInsets.all(32)
-    ..indicatorWidget =
-        LoadingAnimationWidget.prograssiveDots(color: kPrimaryColor, size: 48);
+    ..indicatorWidget = LoadingAnimationWidget.prograssiveDots(color: kPrimaryColor, size: 48);
 
   if (kDebugMode) {
     Bloc.observer = const AppBlocObserver();
   }
 
   // Initialize Flutter Local Notifications
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin _ = FlutterLocalNotificationsPlugin();
 
   NetworkCheckUtilities networkCheckUtilities = NetworkCheckUtilities();
   networkCheckUtilities.listenToNetworkChange(
       noNetworkCallback: () => ToastUtilities.showToast(
-            message:
-                "Network Unavailable. Please check your connection and try again.",
+            message: "Network Unavailable. Please check your connection and try again.",
             toastLength: Toast.LENGTH_LONG,
           ),
       gotNetworkCallback: () => ToastUtilities.showToast(
@@ -79,8 +76,7 @@ void main() async {
   }
 
   runApp(BlocProvider<AuthenticationBloc>(
-    create: (context) =>
-        injector()..add(const AuthenticationEvent.authenticateStarted()),
+    create: (context) => injector()..add(const AuthenticationEvent.authenticateStarted()),
     child: BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         appRouter.push(state.map(
@@ -206,20 +202,16 @@ class _MyAppState extends State<MyApp> {
             style: ElevatedButton.styleFrom(
                 backgroundColor: kPrimaryColor,
                 foregroundColor: Colors.white,
-                textStyle:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8))),
+                textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
           ),
           outlinedButtonTheme: OutlinedButtonThemeData(
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
                 foregroundColor: kPrimaryColor,
-                textStyle:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 side: const BorderSide(color: kPrimaryColor, width: 2),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8))),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
           ),
           inputDecorationTheme: InputDecorationTheme(
             fillColor: kGreyscale3,
@@ -261,8 +253,7 @@ class _MyAppState extends State<MyApp> {
       locale: DevicePreview.locale(context),
       builder: (context, child) {
         EasyLoading.init();
-        return DevicePreview.appBuilder(
-            context, FlutterEasyLoading(child: child));
+        return DevicePreview.appBuilder(context, FlutterEasyLoading(child: child));
       },
       routeInformationParser: appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,

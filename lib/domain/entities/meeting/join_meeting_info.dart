@@ -10,9 +10,7 @@ class JoinMeetingInfo {
   final int? role;
   final int? status;
 
-  JoinMeetingInfo(
-      {this.id, this.userId, this.memberId, this.role, this.status});
+  JoinMeetingInfo({this.id, this.userId, this.memberId, this.role, this.status});
 
-  factory JoinMeetingInfo.fromJson(Map<String, dynamic> json) =>
-      _$JoinMeetingInfoFromJson(json);
+  factory JoinMeetingInfo.fromJson(Map<String, dynamic> json) => _$JoinMeetingInfoFromJson(json);
 }

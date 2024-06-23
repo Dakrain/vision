@@ -41,10 +41,7 @@ class _TextfieldWithLabelState extends State<TextfieldWithLabel> {
       children: [
         Text(
           widget.label,
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(fontWeight: FontWeight.w500),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500),
         ),
         const Gap(8),
         TextFormField(

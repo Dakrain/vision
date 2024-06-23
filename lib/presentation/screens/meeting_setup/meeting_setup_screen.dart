@@ -53,9 +53,7 @@ class MeetingSetupScreen extends StatelessWidget {
               actions: [
                 MaterialButton(
                   onPressed: () {
-                    context
-                        .read<MeetingSetupBloc>()
-                        .add(const MeetingSetupEvent.createMeeting());
+                    context.read<MeetingSetupBloc>().add(const MeetingSetupEvent.createMeeting());
                   },
                   child: Text(
                     'Xong',
@@ -90,8 +88,7 @@ class MeetingSetupScreen extends StatelessWidget {
                           focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 20),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
                           filled: true,
                           fillColor: Colors.white,
                         ),
@@ -115,10 +112,7 @@ class MeetingSetupScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '09:30, T4, 09/9/2021',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge
-                                        ?.copyWith(color: kGreyscale50),
+                                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale50),
                                   ),
                                   const Icon(
                                     Icons.chevron_right,
@@ -201,10 +195,7 @@ class MeetingSetupScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   state.meeting.limitUser.toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(color: kGreyscale50),
+                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale50),
                                 ),
                                 const Icon(
                                   Icons.chevron_right,
@@ -225,9 +216,7 @@ class MeetingSetupScreen extends StatelessWidget {
                           Switch(
                               value: state.meeting.waitingRoom == 1,
                               onChanged: (value) {
-                                context.read<MeetingSetupBloc>().add(
-                                    MeetingSetupEvent.changedWaitingRoom(
-                                        value));
+                                context.read<MeetingSetupBloc>().add(MeetingSetupEvent.changedWaitingRoom(value));
                               })
                         ],
                       ),
@@ -241,9 +230,7 @@ class MeetingSetupScreen extends StatelessWidget {
                           Switch(
                               value: state.meeting.enableAudio == 1,
                               onChanged: (value) {
-                                context
-                                    .read<MeetingSetupBloc>()
-                                    .add(MeetingSetupEvent.changedAudio(value));
+                                context.read<MeetingSetupBloc>().add(MeetingSetupEvent.changedAudio(value));
                               })
                         ],
                       ),
@@ -257,9 +244,7 @@ class MeetingSetupScreen extends StatelessWidget {
                           Switch(
                               value: state.meeting.enableVideo == 1,
                               onChanged: (value) {
-                                context
-                                    .read<MeetingSetupBloc>()
-                                    .add(MeetingSetupEvent.changedVideo(value));
+                                context.read<MeetingSetupBloc>().add(MeetingSetupEvent.changedVideo(value));
                               })
                         ],
                       ),
@@ -273,9 +258,7 @@ class MeetingSetupScreen extends StatelessWidget {
                           Switch(
                               value: state.meeting.isRecording == 1,
                               onChanged: (value) {
-                                context.read<MeetingSetupBloc>().add(
-                                    MeetingSetupEvent.changedAllowRecord(
-                                        value));
+                                context.read<MeetingSetupBloc>().add(MeetingSetupEvent.changedAllowRecord(value));
                               })
                         ],
                       ),
@@ -289,8 +272,7 @@ class MeetingSetupScreen extends StatelessWidget {
                           Switch(
                               value: state.meeting.enableChat == 1,
                               onChanged: (value) {
-                                context.read<MeetingSetupBloc>().add(
-                                    MeetingSetupEvent.changedAllowChat(value));
+                                context.read<MeetingSetupBloc>().add(MeetingSetupEvent.changedAllowChat(value));
                               })
                         ],
                       )
@@ -298,8 +280,7 @@ class MeetingSetupScreen extends StatelessWidget {
                   ),
                   Section(
                     title: 'TRAO QUYỀN CO-HOST',
-                    subTitle:
-                        'Trao quyền co-host để giúp cho bạn dể dàng chuyển host cho cuộc họp',
+                    subTitle: 'Trao quyền co-host để giúp cho bạn dể dàng chuyển host cho cuộc họp',
                     children: [
                       GestureDetector(
                         onTap: () {
@@ -316,10 +297,7 @@ class MeetingSetupScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   '6',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(color: kGreyscale50),
+                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale50),
                                 ),
                                 const Icon(
                                   Icons.chevron_right,
@@ -339,14 +317,10 @@ class MeetingSetupScreen extends StatelessWidget {
                     child: Container(
                       width: double.maxFinite,
                       color: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       child: Text(
                         'Thêm người vào phòng',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(color: kPrimaryColor),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kPrimaryColor),
                       ),
                     ),
                   ),

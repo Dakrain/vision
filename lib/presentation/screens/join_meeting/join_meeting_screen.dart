@@ -29,13 +29,10 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
       create: (context) => injector<JoinMeetingBloc>(),
       child: BlocConsumer<JoinMeetingBloc, JoinMeetingState>(
         listener: (context, state) {
-          state.maybeMap(
-              loading: (_) => EasyLoading.show(),
-              orElse: () => EasyLoading.dismiss());
+          state.maybeMap(loading: (_) => EasyLoading.show(), orElse: () => EasyLoading.dismiss());
 
           state.whenOrNull(
-            error: (error) =>
-                EasyLoading.showError(error.message ?? 'Something went wrong'),
+            error: (error) => EasyLoading.showError(error.message ?? 'Something went wrong'),
             success: (meeting) => context.pushRoute(
               MeetingRoute(meetingInfo: meeting),
             ),
@@ -49,8 +46,7 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
                 children: [
                   const Gap(8),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                     color: Colors.white,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,8 +72,7 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
                   ),
                   const Gap(8),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                     color: Colors.white,
                     child: TextfieldWithLabel(
                       readOnly: true,
@@ -101,9 +96,7 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
                       final meetingId = _meetingIdController.text;
                       final passcode = _passcodeController.text;
 
-                      context
-                          .read<JoinMeetingBloc>()
-                          .add(JoinMeetingEvent.joinMeeting(
+                      context.read<JoinMeetingBloc>().add(JoinMeetingEvent.joinMeeting(
                             meetingId,
                             passcode,
                           ));
@@ -117,17 +110,10 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
-                              ?.copyWith(
-                                  color: kGreyscale80,
-                                  fontWeight: FontWeight.w500)),
-                      const TextSpan(
-                          text:
-                              ', hãy chọn vào đường liên kết đó để vào cuộc họp')
+                              ?.copyWith(color: kGreyscale80, fontWeight: FontWeight.w500)),
+                      const TextSpan(text: ', hãy chọn vào đường liên kết đó để vào cuộc họp')
                     ]),
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.copyWith(color: kGreyscale50),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kGreyscale50),
                     textAlign: TextAlign.center,
                   )
                 ],

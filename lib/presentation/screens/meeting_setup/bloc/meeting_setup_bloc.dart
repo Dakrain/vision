@@ -17,37 +17,25 @@ class MeetingSetupBloc extends Bloc<MeetingSetupEvent, MeetingSetupState> {
       await event.map(
           started: (event) {},
           changedTitle: (event) {
-            emit(state.copyWith(
-                meeting: state.meeting.copyWith(title: event.title)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(title: event.title)));
           },
           changedWaitingRoom: (event) {
-            emit(state.copyWith(
-                meeting:
-                    state.meeting.copyWith(waitingRoom: event.value ? 1 : 0)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(waitingRoom: event.value ? 1 : 0)));
           },
           changedAudio: (event) {
-            emit(state.copyWith(
-                meeting:
-                    state.meeting.copyWith(enableAudio: event.value ? 1 : 0)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(enableAudio: event.value ? 1 : 0)));
           },
           changedVideo: (event) {
-            emit(state.copyWith(
-                meeting:
-                    state.meeting.copyWith(enableVideo: event.value ? 1 : 0)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(enableVideo: event.value ? 1 : 0)));
           },
           changedAllowRecord: (event) {
-            emit(state.copyWith(
-                meeting:
-                    state.meeting.copyWith(isRecording: event.value ? 1 : 0)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(isRecording: event.value ? 1 : 0)));
           },
           changedAllowChat: (event) {
-            emit(state.copyWith(
-                meeting:
-                    state.meeting.copyWith(enableChat: event.value ? 1 : 0)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(enableChat: event.value ? 1 : 0)));
           },
           changedLimitUser: (event) {
-            emit(state.copyWith(
-                meeting: state.meeting.copyWith(limitUser: event.number)));
+            emit(state.copyWith(meeting: state.meeting.copyWith(limitUser: event.number)));
           },
           createMeeting: (event) async {
             emit(MeetingSetupState.loading(state.meeting));

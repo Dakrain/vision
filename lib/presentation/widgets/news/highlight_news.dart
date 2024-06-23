@@ -38,20 +38,14 @@ class HighlightNews extends StatelessWidget {
         const Gap(16),
         Text(
           title ?? '',
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(fontWeight: FontWeight.w600),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
         ),
         if (shortDescription != null) ...[
           const Gap(16),
           Text(shortDescription ?? '',
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: kGreyscale50))
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kGreyscale50))
         ],
         const Gap(8),
         Row(
@@ -59,12 +53,8 @@ class HighlightNews extends StatelessWidget {
             Assets.svg.icons.icClock.svg(),
             const Gap(8),
             Text(
-              DateTimeUtils.getFormattedDateFromTimestamp(
-                  createdAt ?? 0, 'dd/MM/yyyy'),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall
-                  ?.copyWith(color: kGreyscale50),
+              DateTimeUtils.getFormattedDateFromTimestamp(createdAt ?? 0, 'dd/MM/yyyy'),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
             ),
           ],
         )

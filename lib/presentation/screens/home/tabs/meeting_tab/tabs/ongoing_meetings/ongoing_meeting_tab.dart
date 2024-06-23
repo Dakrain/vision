@@ -37,9 +37,7 @@ class _OngoingMeetingTabState extends State<OngoingMeetingTab> {
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: segmentedControlGroupValue == 0
-                                  ? kGreyscale80
-                                  : kGreyscale50),
+                              color: segmentedControlGroupValue == 0 ? kGreyscale80 : kGreyscale50),
                         )),
                     1: SizedBox(
                         width: constraint.maxWidth / 2,
@@ -49,9 +47,7 @@ class _OngoingMeetingTabState extends State<OngoingMeetingTab> {
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: segmentedControlGroupValue == 1
-                                  ? kGreyscale80
-                                  : kGreyscale50),
+                              color: segmentedControlGroupValue == 1 ? kGreyscale80 : kGreyscale50),
                         )),
                   },
                   onValueChanged: (i) {
@@ -81,17 +77,14 @@ class OngoingEventItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              offset: const Offset(0, 4),
-              blurRadius: 8,
-              spreadRadius: 0,
-            ),
-          ]),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white, boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          offset: const Offset(0, 4),
+          blurRadius: 8,
+          spreadRadius: 0,
+        ),
+      ]),
       child: Material(
         color: Colors.white,
         child: Column(
@@ -102,10 +95,7 @@ class OngoingEventItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Cuộc họp thường niên đầu tháng (02/6/2021)',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                   ),
                 ),
                 InkWell(
@@ -124,9 +114,7 @@ class OngoingEventItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          CircleAsset(
-                              color: kAlternateColorPurple,
-                              path: Assets.svg.icons.icPerson.path),
+                          CircleAsset(color: kAlternateColorPurple, path: Assets.svg.icons.icPerson.path),
                           const Gap(8),
                           Text(
                             'Mục sư Nguyễn Văn A',
@@ -137,9 +125,7 @@ class OngoingEventItem extends StatelessWidget {
                       const Gap(4),
                       Row(
                         children: [
-                          CircleAsset(
-                              color: kAlternateColorOrange,
-                              path: Assets.svg.icons.icClock.path),
+                          CircleAsset(color: kAlternateColorOrange, path: Assets.svg.icons.icClock.path),
                           const Gap(8),
                           Text(
                             '5:00PM (GTM+7)',
@@ -150,9 +136,7 @@ class OngoingEventItem extends StatelessWidget {
                       const Gap(4),
                       Row(
                         children: [
-                          CircleAsset(
-                              color: kAlternateColorLightBlue,
-                              path: Assets.svg.icons.icId.path),
+                          CircleAsset(color: kAlternateColorLightBlue, path: Assets.svg.icons.icId.path),
                           const Gap(8),
                           Text(
                             '123456',
@@ -171,12 +155,13 @@ class OngoingEventItem extends StatelessWidget {
                   child: InkWell(
                     onTap: () {},
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 2, horizontal: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                       child: Text(
                         'Tham gia',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w600, color: kPrimaryColor),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(fontWeight: FontWeight.w600, color: kPrimaryColor),
                       ),
                     ),
                   ),

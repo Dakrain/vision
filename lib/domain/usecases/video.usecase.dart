@@ -8,19 +8,16 @@ class VideoUsecase {
 
   VideoUsecase(this.repository);
 
-  Future<Either<ApiError, Paging<Video>>> fetchVideos(
-      {int? categoryId, int? pageNumber}) async {
+  Future<Either<ApiError, Paging<Video>>> fetchVideos({int? categoryId, int? pageNumber}) async {
     try {
-      final result = await repository.fetchVideos(
-          pageNumber: pageNumber, categoryId: categoryId);
+      final result = await repository.fetchVideos(pageNumber: pageNumber, categoryId: categoryId);
       return Right(result);
     } catch (e) {
       return Left(ApiError.fromException(e));
     }
   }
 
-  Future<Either<ApiError, Paging<Video>>> fetchRelatedVideos(
-      int videoId) async {
+  Future<Either<ApiError, Paging<Video>>> fetchRelatedVideos(int videoId) async {
     try {
       final result = await repository.fetchRelatedVideos(videoId);
       return Right(result);
@@ -29,8 +26,7 @@ class VideoUsecase {
     }
   }
 
-  Future<Either<ApiError, Paging<VideoCategory>>>
-      fetchVideosGroupByCategory() async {
+  Future<Either<ApiError, Paging<VideoCategory>>> fetchVideosGroupByCategory() async {
     try {
       final result = await repository.fetchVideosGroupByCategory();
       return Right(result);

@@ -47,8 +47,7 @@ abstract class MeetingService {
   );
 
   @GET('/meeting/{id}/user')
-  Future<BaseResponse<Paging<MeetingMember>>> fetchMeetingUsers(
-      @Path('id') String meetingId);
+  Future<BaseResponse<Paging<MeetingMember>>> fetchMeetingUsers(@Path('id') String meetingId);
 
   @PUT('/meeting/{id}/user/{userId}')
   Future<BaseResponse<StatusResponse>> changeStatusUser(

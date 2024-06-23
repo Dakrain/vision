@@ -7,8 +7,7 @@ class JoinMeetingRequest {
   final String visionMeetingKey;
   final String visionMeetingPwd;
 
-  JoinMeetingRequest(
-      {required this.visionMeetingKey, required this.visionMeetingPwd});
+  JoinMeetingRequest({required this.visionMeetingKey, required this.visionMeetingPwd});
 
   Map<String, dynamic> toJson() => _$JoinMeetingRequestToJson(this);
 }

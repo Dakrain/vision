@@ -29,11 +29,9 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
   @override
   void initState() {
     super.initState();
-    _videoPlayerController = VideoPlayerController.networkUrl(
-        Uri.parse(widget.video.videoUrl ?? ''));
+    _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(widget.video.videoUrl ?? ''));
     _videoPlayerController.initialize().then((_) {
-      _chewieController =
-          ChewieController(videoPlayerController: _videoPlayerController);
+      _chewieController = ChewieController(videoPlayerController: _videoPlayerController);
     });
   }
 
@@ -55,8 +53,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
       backgroundColor: Colors.white,
       body: BlocProvider(
         lazy: false,
-        create: (context) => injector<RelatedVideoCubit>()
-          ..fetchRelatedVideos(widget.video.id ?? 0),
+        create: (context) => injector<RelatedVideoCubit>()..fetchRelatedVideos(widget.video.id ?? 0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,10 +73,8 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text('Video liên quan',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20)),
+                    style:
+                        Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 20)),
               ),
               BlocBuilder<RelatedVideoCubit, BasicState<Paging<Video>>>(
                 builder: (context, state) {
@@ -87,15 +82,13 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                       success: (value) {
                         return ListView.separated(
                             shrinkWrap: true,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 24),
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                             primary: false,
                             itemBuilder: (context, index) {
                               final video = value.data.rows[index];
                               return GestureDetector(
                                 onTap: () {
-                                  context.router
-                                      .push(VideoDetailRoute(video: video));
+                                  context.router.push(VideoDetailRoute(video: video));
                                 },
                                 child: Row(
                                   children: [
@@ -103,12 +96,8 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                                       borderRadius: BorderRadius.circular(8),
                                       child: CachedImage(
                                         imageUrl: video.thumbnailUrl ?? '',
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.4,
-                                        height:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.3,
+                                        width: MediaQuery.sizeOf(context).width * 0.4,
+                                        height: MediaQuery.sizeOf(context).width * 0.3,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -116,11 +105,8 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                                     Expanded(
                                         child: Text(
                                       video.title ?? '',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge
-                                          ?.copyWith(
-                                              fontWeight: FontWeight.w600),
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                                     ))
                                   ],
                                 ),

@@ -11,16 +11,9 @@ class ShareScreenUser {
   final String? agRtmToken;
   final String? agScreenToken;
 
-  ShareScreenUser(
-      {this.agUid,
-      this.agUserId,
-      this.agScreenId,
-      this.agRtcToken,
-      this.agRtmToken,
-      this.agScreenToken});
+  ShareScreenUser({this.agUid, this.agUserId, this.agScreenId, this.agRtcToken, this.agRtmToken, this.agScreenToken});
 
-  factory ShareScreenUser.fromJson(Map<String, dynamic> json) =>
-      _$ShareScreenUserFromJson(json);
+  factory ShareScreenUser.fromJson(Map<String, dynamic> json) => _$ShareScreenUserFromJson(json);
 
   Map<String, dynamic> toJson() => _$ShareScreenUserToJson(this);
 }

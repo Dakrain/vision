@@ -4,8 +4,7 @@ import 'package:flutter_base_project/presentation/widgets/network_image.dart';
 import 'package:gap/gap.dart';
 
 class VideoItem extends StatelessWidget {
-  const VideoItem(
-      {super.key, this.imageUrl = '', this.title, this.percentageWidth = 0.7});
+  const VideoItem({super.key, this.imageUrl = '', this.title, this.percentageWidth = 0.7});
   final String? imageUrl;
   final String? title;
   final double percentageWidth;
@@ -53,10 +52,7 @@ class VideoItem extends StatelessWidget {
             title ?? '',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
         ],
       ),

@@ -28,29 +28,21 @@ class EventItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime eventDate =
-        DateTime.fromMillisecondsSinceEpoch(startDate ?? 1 * 1000);
-    String month = DateFormat('MMM')
-        .format(eventDate); // Format month as 3-letter abbreviation
+    DateTime eventDate = DateTime.fromMillisecondsSinceEpoch(startDate ?? 1 * 1000);
+    String month = DateFormat('MMM').format(eventDate); // Format month as 3-letter abbreviation
     String dayOfMonth = eventDate.day.toString();
-    DateTime eventStartTime =
-        DateTime.fromMillisecondsSinceEpoch(startTime ?? 1 * 1000);
-    DateTime eventEndTime =
-        DateTime.fromMillisecondsSinceEpoch(endTime ?? 1 * 1000);
+    DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(startTime ?? 1 * 1000);
+    DateTime eventEndTime = DateTime.fromMillisecondsSinceEpoch(endTime ?? 1 * 1000);
 
     String formattedDate = DateFormat('dd/MM/yyyy').format(eventDate);
     String formattedStartTime = DateFormat('HH:mm').format(eventStartTime);
     String formattedEndTime = DateFormat('HH:mm').format(eventEndTime);
 
-    String formattedDateTime =
-        '$formattedStartTime - $formattedEndTime - $formattedDate';
+    String formattedDateTime = '$formattedStartTime - $formattedEndTime - $formattedDate';
 
     const text = 'Sample text';
     final textStyle = Theme.of(context).textTheme.bodySmall;
-    final nameTextStyle = Theme.of(context)
-        .textTheme
-        .bodyLarge
-        ?.copyWith(fontWeight: FontWeight.w600);
+    final nameTextStyle = Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600);
 
     // Create a TextPainter to measure the text
     final textPainter = TextPainter(
@@ -77,8 +69,7 @@ class EventItem extends StatelessWidget {
     final twoLinesHeight = singleLineHeight * 2;
     final nameTwoLinesHeight = nameSingleLineHeight * 2;
     final imageHeight = (MediaQuery.sizeOf(context).width * .65) / 2;
-    final cardHeight =
-        imageHeight + nameTwoLinesHeight + twoLinesHeight * 3 + 60;
+    final cardHeight = imageHeight + nameTwoLinesHeight + twoLinesHeight * 3 + 60;
 
     return Container(
       width: MediaQuery.sizeOf(context).width * .65,
@@ -115,21 +106,16 @@ class EventItem extends StatelessWidget {
                   name ?? '',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge
-                      ?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                 ),
                 const Gap(16),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 9, vertical: 6),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: kPrimaryColor.withOpacity(0.1)),
+                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(8), color: kPrimaryColor.withOpacity(0.1)),
                       child: Column(
                         children: [
                           Text(
@@ -137,17 +123,13 @@ class EventItem extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: kPrimaryColor),
+                                ?.copyWith(fontWeight: FontWeight.w500, color: kPrimaryColor),
                           ),
                           Text(dayOfMonth,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      color: kPrimaryColor)),
+                                  ?.copyWith(fontWeight: FontWeight.w500, color: kPrimaryColor)),
                         ],
                       ),
                     ),

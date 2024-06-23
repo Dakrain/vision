@@ -37,10 +37,7 @@ class AssignCohostScreen extends StatelessWidget {
                   onTap: () {},
                   child: Text(
                     'Hủy',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: kPrimaryColor),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kPrimaryColor),
                   ),
                 )
               ],
@@ -56,8 +53,8 @@ class AssignCohostScreen extends StatelessWidget {
                     children: [
                       const CircleAvatar(
                         radius: 24,
-                        backgroundImage: CachedNetworkImageProvider(
-                            'https://ntvb.tmsimg.com/assets/assets/500192_v9_ba.jpg'),
+                        backgroundImage:
+                            CachedNetworkImageProvider('https://ntvb.tmsimg.com/assets/assets/500192_v9_ba.jpg'),
                       ),
                       const Gap(16),
                       Expanded(
@@ -66,17 +63,11 @@ class AssignCohostScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Nguyen Van A',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.w600),
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                             ),
                             Text(
                               'nguyenvana@gmail.com',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(color: kGreyscale50),
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                             )
                           ],
                         ),
@@ -102,17 +93,11 @@ class AssignCohostScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Nguyen Van B',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.w600),
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                             ),
                             Text(
                               'nguyenvanb@gmail.com',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(color: kGreyscale50),
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                             )
                           ],
                         ),

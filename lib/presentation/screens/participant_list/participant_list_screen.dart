@@ -49,11 +49,7 @@ class ParticipantListScreen extends StatelessWidget {
                 ),
                 Section(
                   title: 'ĐÃ THÊM VÀO PHÒNG',
-                  children: [
-                    ParticipantItem(),
-                    ParticipantItem(),
-                    ParticipantItem()
-                  ],
+                  children: [ParticipantItem(), ParticipantItem(), ParticipantItem()],
                 ),
               ],
             ),

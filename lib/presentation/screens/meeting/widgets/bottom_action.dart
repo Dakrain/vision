@@ -28,10 +28,7 @@ class BottomAction extends StatelessWidget {
             asset,
             Text(
               title,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall
-                  ?.copyWith(color: kGreyscale20, fontWeight: FontWeight.w500),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale20, fontWeight: FontWeight.w500),
               maxLines: 2,
               textAlign: TextAlign.center,
             )

@@ -44,6 +44,5 @@ class Related {
     this.categoryName,
   });
 
-  factory Related.fromJson(Map<String, dynamic> json) =>
-      _$RelatedFromJson(json);
+  factory Related.fromJson(Map<String, dynamic> json) => _$RelatedFromJson(json);
 }

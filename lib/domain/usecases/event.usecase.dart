@@ -18,8 +18,7 @@ class EventUsecase {
     int pageNumber = 1,
   }) async {
     try {
-      final result = await repository.getEvents(
-          type: type, name: name, pageNumber: pageNumber);
+      final result = await repository.getEvents(type: type, name: name, pageNumber: pageNumber);
 
       return Right(result);
     } catch (e) {

@@ -32,10 +32,7 @@ class QuickAsset extends StatelessWidget {
             const Gap(4),
             Text(
               title,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall
-                  ?.copyWith(fontWeight: FontWeight.w500),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500),
             ),
           ],
         ),

@@ -18,10 +18,7 @@ class MeetingTab extends StatelessWidget {
             title: const Text('Cuộc họp'),
             centerTitle: true,
             leading: const SizedBox(),
-            titleTextStyle: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(fontWeight: FontWeight.w600),
+            titleTextStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
             bottom: const TabBar(
                 indicatorWeight: 1,
                 labelPadding: EdgeInsets.zero,
@@ -31,8 +28,7 @@ class MeetingTab extends StatelessWidget {
                 indicatorPadding: EdgeInsets.zero,
                 indicatorSize: TabBarIndicatorSize.tab,
                 unselectedLabelColor: kGreyscale50,
-                indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(color: kPrimaryColor, width: 2)),
+                indicator: UnderlineTabIndicator(borderSide: BorderSide(color: kPrimaryColor, width: 2)),
                 tabs: [
                   Tab(
                     text: 'Cuộc họp',

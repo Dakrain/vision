@@ -15,10 +15,7 @@ class MeetingChatScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: const Text('Tin nhắn trong cuộc họp'),
-        titleTextStyle: Theme.of(context)
-            .textTheme
-            .bodyLarge
-            ?.copyWith(color: Colors.white),
+        titleTextStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SafeArea(
@@ -26,15 +23,13 @@ class MeetingChatScreen extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                 child: Column(
                   children: [
                     Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                            color: kPrimaryColor.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8)),
+                            color: kPrimaryColor.withOpacity(0.1), borderRadius: BorderRadius.circular(8)),
                         child: const Text(
                             'Tin nhắn chỉ hiển thị với những người tham gia cuộc họp và sẽ bị xoá khi cuộc họp kết thúc')),
                     const Gap(24),
@@ -52,10 +47,7 @@ class MeetingChatScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Nguyen Van A',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(fontWeight: FontWeight.w500)),
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500)),
                               const Gap(4),
                               Container(
                                 padding: const EdgeInsets.all(8),
@@ -71,16 +63,12 @@ class MeetingChatScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Chào mọi người, mình tên là Nguyễn Văn A, hiện tại mình đang sinh sống và làm việc tại TP. HCM.',
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
+                                      style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                     const Gap(8),
                                     Text(
                                       '11:52',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(color: kGreyscale50),
+                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                                     )
                                   ],
                                 ),
@@ -100,16 +88,12 @@ class MeetingChatScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Mọi người cho em hỏi là mọi người họp lâu chưa ạ?',
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
+                                      style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                     const Gap(8),
                                     Text(
                                       '11:52',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(color: kGreyscale50),
+                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
                                     )
                                   ],
                                 ),

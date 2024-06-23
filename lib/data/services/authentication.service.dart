@@ -7,8 +7,7 @@ part 'authentication.service.g.dart';
 
 @RestApi()
 abstract class AuthenticationService {
-  factory AuthenticationService(Dio dio, {String? baseUrl}) =
-      _AuthenticationService;
+  factory AuthenticationService(Dio dio, {String? baseUrl}) = _AuthenticationService;
 
   @POST('/user/login')
   Future<BaseResponse<User>> login(@Body() LoginRequest request);

@@ -44,8 +44,7 @@ class ShopItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(16)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                 child: CachedImage(
                   imageUrl: imageUrl ?? '',
                   fit: BoxFit.contain,
@@ -75,14 +74,10 @@ class ShopItem extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: HexColor(color ?? '#E9E9E9').withOpacity(0.1),
                           borderRadius: BorderRadius.circular(4),
-                          border: Border.all(
-                              width: 1, color: HexColor(color ?? '#E9E9E9'))),
+                          border: Border.all(width: 1, color: HexColor(color ?? '#E9E9E9'))),
                       child: Text(
                         categoryName ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(fontWeight: FontWeight.w500),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500),
                       ),
                     ),
                     const Gap(8),
@@ -90,16 +85,15 @@ class ShopItem extends StatelessWidget {
                       name ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                     ),
                     const Gap(8),
                     Text(
                       '\$$price',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: kPrimaryColor, fontWeight: FontWeight.w500),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(color: kPrimaryColor, fontWeight: FontWeight.w500),
                     )
                   ],
                 ),
