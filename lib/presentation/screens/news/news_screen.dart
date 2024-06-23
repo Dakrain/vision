@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_project/core/base/basic_state.dart';
 import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/core/router/app_router.dart';
-import 'package:flutter_base_project/core/utils/date_utils.dart';
 import 'package:flutter_base_project/domain/entities/entities.dart';
-import 'package:flutter_base_project/gen/assets.gen.dart';
 import 'package:flutter_base_project/presentation/screens/news/cubit/news_cubit.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/widgets/widgets.dart';
@@ -14,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../widgets/news/news_item.dart';
 import 'cubit/hight_light_news_cubit.dart';
 
 @RoutePage()

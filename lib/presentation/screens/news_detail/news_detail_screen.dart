@@ -6,7 +6,6 @@ import 'package:flutter_base_project/domain/entities/entities.dart';
 import 'package:flutter_base_project/gen/assets.gen.dart';
 import 'package:flutter_base_project/presentation/screens/news_detail/cubit/news_detail_cubit.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
-import 'package:flutter_base_project/presentation/widgets/network_image.dart';
 import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';

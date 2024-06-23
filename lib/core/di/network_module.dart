@@ -17,16 +17,6 @@ abstract class NetworkModule {
 
     final Dio dio = Dio();
 
-    dio.interceptors.add(LogInterceptor(
-      responseBody: true,
-      requestHeader: true,
-      responseHeader: true,
-      requestBody: true,
-      logPrint: (object) {
-        log('Dio: $object');
-      },
-    ));
-
     dio.interceptors.add(ResponseInterceptor());
 
     dio.interceptors.add(AuthenInterceptor(

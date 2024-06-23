@@ -5,7 +5,6 @@ import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:gap/gap.dart';
 
 import '../../theme/colors.dart';
-import 'package:intl/intl.dart';
 
 class HighlightNews extends StatelessWidget {
   const HighlightNews({

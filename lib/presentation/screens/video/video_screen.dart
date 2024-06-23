@@ -1,14 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_base_project/core/base/basic_state.dart';
 import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/core/router/app_router.dart';
 import 'package:flutter_base_project/domain/entities/entities.dart';
-import 'package:flutter_base_project/domain/entities/video/video_category.dart';
 import 'package:flutter_base_project/presentation/screens/video/cubit/slide_video_cubit.dart';
-import 'package:flutter_base_project/presentation/screens/video_category/video_category_screen.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/utilities/text_utils.dart';
 import 'package:flutter_base_project/presentation/widgets/widgets.dart';

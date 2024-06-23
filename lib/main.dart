@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:device_preview/device_preview.dart';
@@ -102,7 +103,7 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    if (bloc is Cubit) print(change);
+    log('🚀${bloc.runtimeType}: ${change.toString()}');
   }
 
   @override
@@ -111,7 +112,31 @@ class AppBlocObserver extends BlocObserver {
     Transition<dynamic, dynamic> transition,
   ) {
     super.onTransition(bloc, transition);
-    print(transition);
+    log('🚀${bloc.runtimeType}: ${transition.toString()}');
+  }
+
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    super.onError(bloc, error, stackTrace);
+    log('🚀${bloc.runtimeType}: ${error.toString()}');
+  }
+
+  @override
+  void onEvent(Bloc bloc, Object? event) {
+    super.onEvent(bloc, event);
+    log('🚀${bloc.runtimeType}: ${event.toString()}');
+  }
+
+  @override
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    log('🚀${bloc.runtimeType}: Created');
+  }
+
+  @override
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    log('🚀${bloc.runtimeType}: Closed');
   }
 }
 

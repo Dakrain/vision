@@ -1,7 +1,4 @@
 import 'package:flutter_base_project/data/repositories/base_repository.dart';
-import 'package:flutter_base_project/domain/entities/paging.dart';
-import 'package:flutter_base_project/domain/entities/video/video.dart';
-import 'package:flutter_base_project/domain/entities/video/video_detail.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/entities.dart';

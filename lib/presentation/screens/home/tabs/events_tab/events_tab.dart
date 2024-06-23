@@ -10,32 +10,30 @@ class EventsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leading: const SizedBox(),
-          title: const Text('Sự kiện'),
-        ),
-        body: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              color: Colors.white,
-              child: const SegmentedControl(
-                labels: ['Đang diễn ra', 'Sắp diễn ra', 'Đã kết thúc'],
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: const SizedBox(),
+        title: const Text('Sự kiện'),
+      ),
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            color: Colors.white,
+            child: const SegmentedControl(
+              labels: ['Đang diễn ra', 'Sắp diễn ra', 'Đã kết thúc'],
             ),
-            SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-              child: Column(
-                children: [
-                  const EventItem(),
-                  const EventItem(),
-                ].separated(const Gap(16)),
-              ),
-            )
-          ],
-        ),
+          ),
+          SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+            child: Column(
+              children: [
+                const EventItem(),
+                const EventItem(),
+              ].separated(const Gap(16)),
+            ),
+          )
+        ],
       ),
     );
   }

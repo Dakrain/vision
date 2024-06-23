@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_base_project/core/base/basic_state.dart';
 import 'package:flutter_base_project/domain/domain.dart';
-import 'package:flutter_base_project/domain/entities/entities.dart';
-import 'package:flutter_base_project/domain/entities/paging.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
