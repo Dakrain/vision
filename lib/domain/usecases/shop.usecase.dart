@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_base_project/domain/repositories/shop.repository.dart';
+import '../entities/shop/categories.dart';
+import '../repositories/shop.repository.dart';
 import 'package:injectable/injectable.dart';
 
 import '../entities/entities.dart';
@@ -33,6 +34,15 @@ class ShopUsecase {
   Future<Either<ApiError, Product>> getProductDetail(int id) async {
     try {
       final result = await repository.getProductDetail(id);
+      return Right(result);
+    } catch (e) {
+      return Left(ApiError.fromException(e));
+    }
+  }
+
+  Future<Either<ApiError, Categories>> getProductGroupByCategory() async {
+    try {
+      final result = await repository.getProductGroupByCategory();
       return Right(result);
     } catch (e) {
       return Left(ApiError.fromException(e));

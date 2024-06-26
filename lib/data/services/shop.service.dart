@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 
-import 'package:flutter_base_project/domain/entities/entities.dart';
+import '../../domain/entities/entities.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../domain/entities/shop/categories.dart';
 
 part 'shop.service.g.dart';
 
@@ -21,4 +23,7 @@ abstract class ShopService {
   Future<BaseResponse<Product>> getProductDetail(
     @Path('id') int id,
   );
+
+  @GET('/product/groupbycategory')
+  Future<BaseResponse<Categories>> getProductGroupByCategory();
 }

@@ -1,3 +1,5 @@
+import '../entities/shop/categories.dart';
+
 import '../entities/entities.dart';
 
 abstract class ShopRepository {
@@ -9,4 +11,6 @@ abstract class ShopRepository {
   });
 
   Future<Product> getProductDetail(int id);
+
+  Future<Categories> getProductGroupByCategory();
 }

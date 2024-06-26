@@ -8,15 +8,17 @@ class QuickAsset extends StatelessWidget {
     required this.title,
     required this.onTap,
     required this.asset,
+    this.itemWidth,
   });
 
   final String title;
   final VoidCallback onTap;
   final String asset;
+  final double? itemWidth;
 
   @override
   Widget build(BuildContext context) {
-    final width = ((MediaQuery.sizeOf(context).width - 72) / 3);
+    final width = itemWidth ?? ((MediaQuery.sizeOf(context).width - 72) / 3);
 
     return SizedBox(
       width: width,
@@ -32,7 +34,12 @@ class QuickAsset extends StatelessWidget {
             const Gap(4),
             Text(
               title,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(fontWeight: FontWeight.w500),
+              maxLines: 2,
+              textAlign: TextAlign.center,
             ),
           ],
         ),
