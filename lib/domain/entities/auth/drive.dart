@@ -20,6 +20,8 @@ class Drive {
 
   factory Drive.fromJson(Map<String, dynamic> json) => _$DriveFromJson(json);
 
+  Map<String, dynamic> toJson() => _$DriveToJson(this);
+
   double getRemainPercentage() {
     if (storageLimit == 0) {
       return 0.0; // Avoid division by zero

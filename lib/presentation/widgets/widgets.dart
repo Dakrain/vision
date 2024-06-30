@@ -1,4 +1,6 @@
 export 'avatar.dart';
+export 'bottom_sheet.dart';
+export 'bottom_sheet_item.dart';
 export 'button.dart';
 export 'network_image.dart';
 export 'news/highlight_news.dart';

@@ -49,6 +49,9 @@ class $AssetsSvgIconsGen {
   /// File path: assets/svg/icons/ic_camera_off.svg
   SvgGenImage get icCameraOff => const SvgGenImage('assets/svg/icons/ic_camera_off.svg');
 
+  /// File path: assets/svg/icons/ic_cancel.svg
+  SvgGenImage get icCancel => const SvgGenImage('assets/svg/icons/ic_cancel.svg');
+
   /// File path: assets/svg/icons/ic_change_camera.svg
   SvgGenImage get icChangeCamera => const SvgGenImage('assets/svg/icons/ic_change_camera.svg');
 
@@ -94,6 +97,9 @@ class $AssetsSvgIconsGen {
   /// File path: assets/svg/icons/ic_dot.svg
   SvgGenImage get icDot => const SvgGenImage('assets/svg/icons/ic_dot.svg');
 
+  /// File path: assets/svg/icons/ic_emoji.svg
+  SvgGenImage get icEmoji => const SvgGenImage('assets/svg/icons/ic_emoji.svg');
+
   /// File path: assets/svg/icons/ic_emotion.svg
   SvgGenImage get icEmotion => const SvgGenImage('assets/svg/icons/ic_emotion.svg');
 
@@ -136,6 +142,9 @@ class $AssetsSvgIconsGen {
   /// File path: assets/svg/icons/ic_id.svg
   SvgGenImage get icId => const SvgGenImage('assets/svg/icons/ic_id.svg');
 
+  /// File path: assets/svg/icons/ic_image.svg
+  SvgGenImage get icImage => const SvgGenImage('assets/svg/icons/ic_image.svg');
+
   /// File path: assets/svg/icons/ic_languages.svg
   SvgGenImage get icLanguages => const SvgGenImage('assets/svg/icons/ic_languages.svg');
 
@@ -168,6 +177,9 @@ class $AssetsSvgIconsGen {
 
   /// File path: assets/svg/icons/ic_orders.svg
   SvgGenImage get icOrders => const SvgGenImage('assets/svg/icons/ic_orders.svg');
+
+  /// File path: assets/svg/icons/ic_paperclip.svg
+  SvgGenImage get icPaperclip => const SvgGenImage('assets/svg/icons/ic_paperclip.svg');
 
   /// File path: assets/svg/icons/ic_person.svg
   SvgGenImage get icPerson => const SvgGenImage('assets/svg/icons/ic_person.svg');
@@ -228,6 +240,7 @@ class $AssetsSvgIconsGen {
         icAudio,
         icCamera,
         icCameraOff,
+        icCancel,
         icChangeCamera,
         icChat,
         icClock,
@@ -243,6 +256,7 @@ class $AssetsSvgIconsGen {
         icDisplay,
         icDonate,
         icDot,
+        icEmoji,
         icEmotion,
         icEmotionOn,
         icGridView,
@@ -257,6 +271,7 @@ class $AssetsSvgIconsGen {
         icHomeMore,
         icHomeMoreSelected,
         icId,
+        icImage,
         icLanguages,
         icLibrary,
         icLiveOngoing,
@@ -268,6 +283,7 @@ class $AssetsSvgIconsGen {
         icMicOn,
         icNotification,
         icOrders,
+        icPaperclip,
         icPerson,
         icPhone,
         icPolicy,

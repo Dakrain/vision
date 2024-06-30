@@ -86,6 +86,9 @@ dependencies:
   flutter_widget_from_html: ^0.15.1
   chewie: ^1.8.1
   video_player: ^2.8.7
+  pubnub: ^4.3.4
+  firebase_messaging: ^14.9.4
+  http_parser: ^4.0.2
   
 # Development dependencies
 dev_dependencies:

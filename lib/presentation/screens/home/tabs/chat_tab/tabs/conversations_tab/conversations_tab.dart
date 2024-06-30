@@ -1,7 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/core/base/basic_state.dart';
+import 'package:flutter_base_project/core/router/app_router.dart';
+import 'package:flutter_base_project/core/utils/date_utils.dart';
+import 'package:flutter_base_project/domain/domain.dart';
+import 'package:flutter_base_project/presentation/screens/home/tabs/chat_tab/tabs/conversations_tab/cubit/conversation_cubit.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
-import 'package:flutter_base_project/presentation/utilities/extensions.dart';
+import 'package:flutter_base_project/presentation/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class ConversationsTab extends StatelessWidget {
@@ -11,18 +17,42 @@ class ConversationsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const ConversationItem(),
-          const ConversationItem(),
-          const ConversationItem(),
-        ].separated(const Divider(
-          height: 1,
-          thickness: 1,
-          color: kGreyscale5,
-        )),
-      ),
+    return BlocBuilder<ConversationCubit, BasicState<Paging<Conversation>>>(
+      builder: (context, state) {
+        return state.maybeMap(
+            success: (state) {
+              return ListView.separated(
+                separatorBuilder: (context, index) => const Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: kGreyscale5,
+                ),
+                itemCount: state.data.rows.length,
+                itemBuilder: (context, index) {
+                  final conversation = state.data.rows[index];
+                  return GestureDetector(
+                    onTap: () {
+                      context.pushRoute(ChatRoute(
+                          chatUser: conversation.inforDirect,
+                          channelId: conversation.from?.channel ?? '',
+                          name: conversation.from?.subject ?? 'Chat'));
+                    },
+                    child: ConversationItem(
+                      avatarUrl: '',
+                      subject: conversation.from?.subject ?? '',
+                      missedMessages: conversation.totalMissedMessage ?? 0,
+                      lastMessage: conversation.lastMessage ?? '',
+                      time: conversation.time ?? 0,
+                    ),
+                  );
+                },
+              );
+            },
+            loading: (_) => const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+            orElse: () => const SizedBox());
+      },
     );
   }
 }
@@ -30,7 +60,18 @@ class ConversationsTab extends StatelessWidget {
 class ConversationItem extends StatelessWidget {
   const ConversationItem({
     super.key,
+    required this.subject,
+    this.missedMessages = 0,
+    required this.lastMessage,
+    this.time = 0,
+    required this.avatarUrl,
   });
+
+  final String subject;
+  final String avatarUrl;
+  final String lastMessage;
+  final int missedMessages;
+  final int time;
 
   @override
   Widget build(BuildContext context) {
@@ -40,39 +81,60 @@ class ConversationItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
+              Avatar(
+                url: avatarUrl,
                 radius: 24,
-                backgroundImage:
-                    CachedNetworkImageProvider('https://i.scdn.co/image/ab67616d0000b273cdcfcac8bef5d30e43fee7b1'),
               ),
               const Gap(16),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                child: Row(
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Trần Thị B',
+                    Expanded(
+                      flex: 8,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            subject,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                           ),
-                        ),
+                          Text(
+                            lastMessage,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w400, color: kGreyscale50),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
                         Text(
-                          'Chủ nhật',
+                          DateTimeUtils.getFormattedDateFromTimestamp(time, 'dd/MM/yyyy'),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(color: kGreyscale50),
-                        )
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: kPrimaryColor,
+                          ),
+                          child: Text(
+                            missedMessages.toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+                          ),
+                        ),
                       ],
                     ),
-                    const Gap(4),
-                    Text(
-                      'Bạn: Cảm ơn bạn nha. Hy vọng trong...',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(fontWeight: FontWeight.w400, color: kGreyscale50),
-                    )
                   ],
                 ),
               )

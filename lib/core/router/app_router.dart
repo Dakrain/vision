@@ -37,5 +37,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: VideoDetailRoute.page),
         AutoRoute(page: ShopRoute.page),
         AutoRoute(page: VideoCategoryRoute.page),
+        AutoRoute(page: ChatRoute.page),
+        AutoRoute(page: ListFriendRequestRoute.page),
+        AutoRoute(page: AddFriendRoute.page),
       ];
 }

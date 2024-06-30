@@ -1,4 +1,7 @@
 export 'authentication.usecase.dart';
+export 'chat.usecase.dart';
+export 'config.usecase.dart';
+export 'contact.usecase.dart';
 export 'event.usecase.dart';
 export 'meeting.usecase.dart';
 export 'news.usecase.dart';
