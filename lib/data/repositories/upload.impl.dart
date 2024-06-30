@@ -27,7 +27,8 @@ class UploadRepositoryImpl extends BaseRepository implements UploadRepository {
     final formData = FormData();
 
     String mimeType = file.path.split('.').last;
-    String contentType = mimeType == 'pdf' ? 'application/pdf' : 'image/$mimeType';
+    String contentType =
+        mimeType == 'pdf' ? 'application/pdf' : 'image/$mimeType';
 
     formData.files.add(
       MapEntry(
@@ -39,6 +40,11 @@ class UploadRepositoryImpl extends BaseRepository implements UploadRepository {
         ),
       ),
     );
+
+    formData.fields.add(MapEntry('type', type));
+    if (type != 'contact') {
+      formData.fields.add(MapEntry('object_id', id.toString()));
+    }
 
     return execute(service.uploadFile(sendProgress: callback, file: formData));
   }

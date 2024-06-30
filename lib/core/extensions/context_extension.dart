@@ -5,13 +5,19 @@ import 'package:flutter_base_project/presentation/global/cubit/config_cubit.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 extension ContextX on BuildContext {
-  User? get user => read<AuthenticationBloc>().state.mapOrNull(authenticated: (value) => value.user);
+  User? get user => read<AuthenticationBloc>()
+      .state
+      .mapOrNull(authenticated: (value) => value.user);
 
-  Config? get config => read<ConfigCubit>().state.mapOrNull(success: (value) => value.data);
+  Config? get config =>
+      read<ConfigCubit>().state.mapOrNull(success: (value) => value.data);
 
   bool get authenticated => user != null;
 
-  Future<void> showDialog({Widget? title, Widget? content, List<Widget>? actions}) async {
+  Size get sizeOf => MediaQuery.sizeOf(this);
+
+  Future<void> showDialog(
+      {Widget? title, Widget? content, List<Widget>? actions}) async {
     return showAdaptiveDialog(
       context: this,
       builder: (context) {

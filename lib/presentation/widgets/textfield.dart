@@ -12,6 +12,11 @@ class TextfieldWithLabel extends StatefulWidget {
     this.readOnly = false,
     this.keyboardType,
     this.errorMessage,
+    this.labelStyle,
+    this.initialValue,
+    this.onTap,
+    this.onChanged,
+    this.onSaved,
   });
   final TextInputType? keyboardType;
   final String label;
@@ -19,9 +24,14 @@ class TextfieldWithLabel extends StatefulWidget {
   final String? errorMessage;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final TextStyle? labelStyle;
   final bool obscureText;
   final bool readOnly;
+  final String? initialValue;
+  final void Function(String)? onChanged;
+  final void Function(String?)? onSaved;
 
+  final void Function()? onTap;
   @override
   State<TextfieldWithLabel> createState() => _TextfieldWithLabelState();
 }
@@ -42,15 +52,19 @@ class _TextfieldWithLabelState extends State<TextfieldWithLabel> {
       children: [
         Text(
           widget.label,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500),
+          style: widget.labelStyle ?? Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500),
         ),
         const Gap(8),
         TextFormField(
+          initialValue: widget.initialValue,
           controller: widget.controller,
           validator: widget.validator,
+          onTap: widget.onTap,
           obscureText: showPassword,
+          onChanged: widget.onChanged,
           readOnly: widget.readOnly,
           keyboardType: widget.keyboardType,
+          onSaved: widget.onSaved,
           decoration: InputDecoration(
             hintText: widget.hintText,
             errorText: widget.errorMessage,

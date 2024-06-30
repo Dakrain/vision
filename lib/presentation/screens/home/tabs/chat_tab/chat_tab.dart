@@ -6,8 +6,10 @@ import 'package:flutter_base_project/core/router/app_router.dart';
 import 'package:flutter_base_project/domain/domain.dart';
 import 'package:flutter_base_project/gen/assets.gen.dart';
 import 'package:flutter_base_project/presentation/screens/home/tabs/chat_tab/tabs/contacts_tab/contacts_tab.dart';
+import 'package:flutter_base_project/presentation/utilities/extensions.dart';
 import 'package:flutter_base_project/presentation/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../theme/colors.dart';
 import 'tabs/contacts_tab/cubit/contact_cubit.dart';
@@ -22,56 +24,83 @@ class ChatTab extends StatelessWidget {
       context: context,
       useSafeArea: true,
       builder: (context) {
-        return BottomSheetS(title: 'Thêm', children: [
-          BottomSheetItem(
-            onTap: () {
-              context.maybePop();
-              context.router.push(const AddFriendRoute());
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Kết bạn',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale80),
-                ),
-                Assets.svg.icons.icUserPlus.svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
-              ],
+        return ModalBottomSheet(
+            title: Text(
+              'Thêm',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
             ),
-          ),
-          BottomSheetItem(
-            onTap: () {
-              context.maybePop();
-              context.router.push(ListFriendRequestRoute(requestType: FriendCommand.requested));
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                Text(
-                  'Lời mời kết bạn',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale80),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
+                  child: Column(
+                    children: [
+                      BottomSheetItem(
+                        onTap: () {
+                          context.maybePop();
+                          context.router.push(const AddFriendRoute());
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Kết bạn',
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale80),
+                            ),
+                            Assets.svg.icons.icUserPlus
+                                .svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
+                          ],
+                        ),
+                      ),
+                      BottomSheetItem(
+                        onTap: () {
+                          context.maybePop();
+                          context.router.push(ListFriendRequestRoute(requestType: FriendCommand.requested));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Lời mời kết bạn',
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale80),
+                            ),
+                            Assets.svg.icons.icUserPlus
+                                .svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
+                          ],
+                        ),
+                      ),
+                      BottomSheetItem(
+                        onTap: () {
+                          context.maybePop();
+                          context.router.push(ListFriendRequestRoute(requestType: FriendCommand.blocked));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Danh sách chặn liên hệ',
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale80),
+                            ),
+                            Assets.svg.icons.icCancel
+                                .svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
+                          ],
+                        ),
+                      ),
+                    ].separated(const Gap((8))),
+                  ),
                 ),
-                Assets.svg.icons.icUserPlus.svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
+                const Divider(color: kGreyscale5, thickness: 1, height: 1),
+                TextButton(
+                    onPressed: () {
+                      context.router.maybePop();
+                    },
+                    child: Text('Hủy',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600)))
               ],
-            ),
-          ),
-          BottomSheetItem(
-            onTap: () {
-              context.maybePop();
-              context.router.push(ListFriendRequestRoute(requestType: FriendCommand.blocked));
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Danh sách chặn liên hệ',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kGreyscale80),
-                ),
-                Assets.svg.icons.icCancel.svg(colorFilter: const ColorFilter.mode(kGreyscale50, BlendMode.srcIn)),
-              ],
-            ),
-          ),
-        ]);
+            ));
       },
     );
   }

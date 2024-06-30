@@ -89,6 +89,7 @@ dependencies:
   pubnub: ^4.3.4
   firebase_messaging: ^14.9.4
   http_parser: ^4.0.2
+  image_picker: ^1.1.2
   
 # Development dependencies
 dev_dependencies:

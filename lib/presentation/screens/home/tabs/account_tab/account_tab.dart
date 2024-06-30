@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/core/extensions/context_extension.dart';
 import 'package:flutter_base_project/gen/assets.gen.dart';
 import 'package:flutter_base_project/presentation/constants/decoration_constants.dart';
 import 'package:flutter_base_project/presentation/global/bloc/authentication_bloc.dart';
+import 'package:flutter_base_project/presentation/screens/account/account_screen.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/widgets/avatar.dart';
 import 'package:flutter_base_project/presentation/widgets/button.dart';
@@ -28,31 +30,36 @@ class AccountTab extends StatelessWidget {
                 bottom: 28,
               ),
               child: context.authenticated
-                  ? Row(
-                      children: [
-                        Avatar(
-                          url: context.user?.avatarUrl,
-                          radius: 32,
-                        ),
-                        const Gap(16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(context.user?.fullName ?? '',
+                  ? GestureDetector(
+                      onTap: () {
+                        context.router.pushWidget(const AccountScreen());
+                      },
+                      child: Row(
+                        children: [
+                          Avatar(
+                            url: context.user?.avatarUrl,
+                            radius: 32,
+                          ),
+                          const Gap(16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(context.user?.fullName ?? '',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20)),
+                              Text(
+                                context.user?.email ?? '',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
-                                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 20)),
-                            Text(
-                              context.user?.email ?? '',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.w400, color: kGreyscale50),
-                            ),
-                          ],
-                        ),
-                      ],
+                                    ?.copyWith(fontWeight: FontWeight.w400, color: kGreyscale50),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     )
                   : Row(
                       children: [
