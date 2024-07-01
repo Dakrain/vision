@@ -1,8 +1,9 @@
-import 'package:flutter_base_project/domain/entities/paging.dart';
-import 'package:flutter_base_project/data/repositories/base_repository.dart';
-import 'package:flutter_base_project/data/services/shop.service.dart';
-import 'package:flutter_base_project/domain/entities/shop/product.dart';
-import 'package:flutter_base_project/domain/repositories/shop.repository.dart';
+import '../../domain/entities/paging.dart';
+import 'base_repository.dart';
+import '../services/shop.service.dart';
+import '../../domain/entities/shop/categories.dart';
+import '../../domain/entities/shop/product.dart';
+import '../../domain/repositories/shop.repository.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: ShopRepository)
@@ -28,5 +29,10 @@ class ShopRepositoryImpl extends BaseRepository implements ShopRepository {
       name: name,
       sort: sortBy,
     ));
+  }
+
+  @override
+  Future<Categories> getProductGroupByCategory() {
+    return execute(service.getProductGroupByCategory());
   }
 }
