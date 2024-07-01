@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_base_project/presentation/screens/shop/widgets/quick_assets.dart';
 import '../../../../gen/assets.gen.dart';
 import 'package:gap/gap.dart';
-
-import '../../home/tabs/dashboard_tab/widgets/quick_asset.dart';
 
 final List<Map<String, dynamic>> categories = [
   {
@@ -78,7 +77,7 @@ class ListCategory extends StatelessWidget {
               itemCount: categories.length,
               separatorBuilder: (context, index) => const Gap(8),
               itemBuilder: (context, index) {
-                return QuickAsset(
+                return ShopQuickAsset(
                   title: categories[index]['title'],
                   onTap: categories[index]['onTap'],
                   asset: categories[index]['asset'],
