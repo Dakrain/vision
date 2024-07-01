@@ -11,6 +11,7 @@ import 'package:flutter_base_project/core/di/injection.dart';
 import 'package:flutter_base_project/core/router/app_router.dart';
 import 'package:flutter_base_project/firebase_options.dart';
 import 'package:flutter_base_project/presentation/global/bloc/authentication_bloc.dart';
+import 'package:flutter_base_project/presentation/global/cubit/config_cubit.dart';
 import 'package:flutter_base_project/presentation/theme/colors.dart';
 import 'package:flutter_base_project/presentation/utilities/network_check_utilities.dart';
 import 'package:flutter_base_project/presentation/utilities/toast_utilities.dart';
@@ -75,8 +76,16 @@ void main() async {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   }
 
-  runApp(BlocProvider<AuthenticationBloc>(
-    create: (context) => injector()..add(const AuthenticationEvent.authenticateStarted()),
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<AuthenticationBloc>(
+        create: (context) => injector()..add(const AuthenticationEvent.authenticateStarted()),
+      ),
+      BlocProvider<ConfigCubit>(
+        lazy: false,
+        create: (context) => injector()..fetchConfig(),
+      ),
+    ],
     child: BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         appRouter.push(state.map(

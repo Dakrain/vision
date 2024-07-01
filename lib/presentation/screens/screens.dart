@@ -20,3 +20,6 @@ export 'video_category/video_category_screen.dart';
 export 'video_detail/video_detail_screen.dart';
 export 'news/news_screen.dart';
 export 'shop/shop_screen.dart';
+export 'chat/chat_screen.dart';
+export 'add_friend/add_friend_screen.dart';
+export 'list_friend_request/list_friend_request_screen.dart';

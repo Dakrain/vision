@@ -1,6 +1,10 @@
 export 'authentiaction.repository.dart';
+export 'chat.repository.dart';
+export 'config.repository.dart';
+export 'contact.repository.dart';
 export 'event.repository.dart';
 export 'meeting.repository.dart';
 export 'news.repository.dart';
 export 'shop.repository.dart';
+export 'upload.repository.dart';
 export 'video.repository.dart';

@@ -1,1 +1,11 @@
 export 'authentication.impl.dart';
+export 'base_repository.dart';
+export 'chat.impl.dart';
+export 'config.impl.dart';
+export 'contact.impl.dart';
+export 'event.impl.dart';
+export 'meeting.impl.dart';
+export 'news.dart';
+export 'shop.impl.dart';
+export 'upload.impl.dart';
+export 'video.impl.dart';

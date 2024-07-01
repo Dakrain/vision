@@ -2,7 +2,6 @@
 
 import '../../domain/constants/error_constant.dart';
 import '../../domain/domain.dart';
-import '../../domain/providers/providers.dart';
 
 abstract class BaseRepository {
   NetworkProvider networkProvider;
@@ -32,6 +31,9 @@ abstract class BaseRepository {
     } catch (e, stacktrace) {
       Future.microtask(() => loggerProvider.log('Error 🚀: ${stacktrace.toString()}'));
 
+      if (e is ApiError) {
+        rethrow;
+      }
       throw const ApiError(
         code: ErrorConstants.defaultErrorCode,
         message: ErrorConstants.defaultErrorMessage,

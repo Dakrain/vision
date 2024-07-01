@@ -5,9 +5,7 @@ import 'chat_info.dart';
 
 part 'user.g.dart';
 
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class User {
   final int? id;
   final String? identifier;
@@ -18,7 +16,11 @@ class User {
   final String? email;
   final int? avatar;
   final int? gender;
-  @JsonKey(fromJson: DateTime.fromMillisecondsSinceEpoch)
+  @JsonKey(
+      fromJson: DateTime.fromMillisecondsSinceEpoch,
+      toJson: toMilisection,
+      includeFromJson: false,
+      defaultValue: DateTime.now)
   final DateTime? birthday;
   final String? organization;
   final String? position;
@@ -60,5 +62,11 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+
   double get percentageDrive => drive?.getRemainPercentage() ?? 0.0;
+
+  static int toMilisection(DateTime time) {
+    return time.millisecondsSinceEpoch;
+  }
 }

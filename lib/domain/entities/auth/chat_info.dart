@@ -11,4 +11,6 @@ class ChatInfo {
   });
 
   factory ChatInfo.fromJson(Map<String, dynamic> json) => _$ChatInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ChatInfoToJson(this);
 }
